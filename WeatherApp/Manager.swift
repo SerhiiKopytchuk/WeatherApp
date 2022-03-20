@@ -16,7 +16,7 @@ class Manager{
         
         let currentWeather = CurrentWeather()
         
-        guard let url = URL(string: "https://api.weatherapi.com/v1/current.json?key=d0a9ecd662d7487b911111422221903&q=Vinnytsya&aqi=no") else {
+        guard let url = URL(string: "https://api.weatherapi.com/v1/forecast.json?key=d0a9ecd662d7487b911111422221903&q=Vinnytsya&days=7&aqi=no&alerts=no") else {
             return
         }
         
@@ -36,6 +36,8 @@ class Manager{
                         guard let current = json["current"] as? [String:Any] else{
                             return
                         }
+                        
+
                         
                         let _location = LocationWeather()
                         
@@ -66,6 +68,64 @@ class Manager{
                         if let windDir = current["wind_dir"] as? String{
                             _current.wind_dir = windDir
                         }
+                        
+                        
+                        guard let forecast = json["forecast"] as? [String:Any] else{
+                            return
+                        }
+                        
+                        guard let forecastDay = forecast["forecastday"] as? [[String:Any]] else {
+                            return
+                        }
+                        var forecastArr:[ForecastDay] = []
+                        
+                        for object in forecastDay{
+                            let _forecast = ForecastDay()
+                            let dayInf = DayInfo()
+                            
+                            if let date = object["date"] as? String{
+                                _forecast.date = date
+                            }
+                                
+                            guard let day = object["day"] as? [String:Any] else{
+                                return
+                            }
+                            
+                            if let maxTempC = day["maxtemp_c"] as? Double{
+                                dayInf.maxTempC = maxTempC
+                            }
+                            
+                            if let minTempC = day["mintemp_c"] as? Double{
+                                dayInf.minTempC = minTempC
+                            }
+                            
+                            _forecast.day = dayInf
+                            
+                            let _cond = Condition()
+                            
+                            guard let condition = day["condition"] as? [String:Any] else {
+                                return
+                            }
+                            
+                            if let condText = condition["text"] as? String {
+                                _cond.text = condText
+                            }
+                            
+                            if var condIcon = condition["icon"] as? String {
+                                _cond.icon = condIcon
+                            }
+                            
+                            dayInf.condition = _cond
+                            
+                            _forecast.day = dayInf
+
+                            forecastArr.append(_forecast)
+                        }
+                        
+                        
+                        let forecastD = Forecast()
+                        forecastD.forecastDay = forecastArr
+                        currentWeather.forecast = forecastD
                         
                         currentWeather.currentWeather = _current
                         

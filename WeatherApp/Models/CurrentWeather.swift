@@ -18,6 +18,7 @@ class Forecast{
 }
 
 class ForecastDay{
+    var date:String? = ""
     var day:DayInfo? = nil
     var hour:[HourlyDayInfo]? = nil
 }
@@ -39,6 +40,7 @@ class DayInfo{
 
 class Condition{
     var text:String? = ""
+    var icon:String? = ""
 }
 
 class LocationWeather{
