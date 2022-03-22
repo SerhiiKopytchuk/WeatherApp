@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4018715A27E9D7AB00579F7A /* HoursCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4018715927E9D7AB00579F7A /* HoursCollectionViewCell.swift */; };
 		405E10C527E5F3B000F3EAC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10C427E5F3B000F3EAC2 /* AppDelegate.swift */; };
 		405E10C727E5F3B000F3EAC2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10C627E5F3B000F3EAC2 /* SceneDelegate.swift */; };
 		405E10C927E5F3B000F3EAC2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10C827E5F3B000F3EAC2 /* MainViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4018715927E9D7AB00579F7A /* HoursCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursCollectionViewCell.swift; sourceTree = "<group>"; };
 		405E10C127E5F3B000F3EAC2 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		405E10C427E5F3B000F3EAC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		405E10C627E5F3B000F3EAC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				405E10E127E603A100F3EAC2 /* DaysCollectionViewCell.swift */,
+				4018715927E9D7AB00579F7A /* HoursCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				405E10C927E5F3B000F3EAC2 /* MainViewController.swift in Sources */,
 				405E10C527E5F3B000F3EAC2 /* AppDelegate.swift in Sources */,
 				405E10E827E63E7500F3EAC2 /* CurrentWeather.swift in Sources */,
+				4018715A27E9D7AB00579F7A /* HoursCollectionViewCell.swift in Sources */,
 				405E10C727E5F3B000F3EAC2 /* SceneDelegate.swift in Sources */,
 				405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */,
 				405E10E427E63DB700F3EAC2 /* Manager.swift in Sources */,

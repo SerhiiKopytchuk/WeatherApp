@@ -79,9 +79,12 @@ class Manager{
                         }
                         var forecastArr:[ForecastDay] = []
                         
+                        
                         for object in forecastDay{
                             let _forecast = ForecastDay()
                             let dayInf = DayInfo()
+                            var hourInfArr = [HourlyDayInfo]()
+                            
                             
                             if let date = object["date"] as? String{
                                 _forecast.date = date
@@ -111,13 +114,54 @@ class Manager{
                                 _cond.text = condText
                             }
                             
-                            if var condIcon = condition["icon"] as? String {
+                            if let condIcon = condition["icon"] as? String {
                                 _cond.icon = condIcon
                             }
-                            
                             dayInf.condition = _cond
-                            
                             _forecast.day = dayInf
+                            
+                            guard let HourlyInfo = object["hour"] as? [[String:Any]] else{
+                                return
+                            }
+                            
+                            for hour in HourlyInfo{
+                                let hourInf = HourlyDayInfo()
+                                
+                                if let time = hour["time"] as? String{
+                                    hourInf.time = time
+                                }
+                                
+                                if let tempC = hour["temp_c"] as? Double{
+                                    hourInf.tempC = tempC
+                                }
+                                
+                                let condition = Condition()
+                                guard let _condition = hour["condition"] as? [String:Any] else {
+                                    return
+                                }
+                                
+                                if let icon = _condition["icon"] as? String{
+                                    condition.icon = icon
+                                }
+                                
+                                if let text = _condition["text"] as? String{
+                                    condition.text = text
+                                }
+                                hourInf.condition = condition
+                                
+                                if let windKph = hour["wind_kph"] as? Double{
+                                    hourInf.windKph = windKph
+                                }
+                                
+                                if let feelsLike = hour["feelslike_c"] as? Double{
+                                    hourInf.feelsLike = feelsLike
+                                }
+                                
+                                hourInfArr.append(hourInf)
+                                
+                            }
+                            
+                            _forecast.hour = hourInfArr
 
                             forecastArr.append(_forecast)
                         }
