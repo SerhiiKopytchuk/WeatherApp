@@ -55,6 +55,8 @@ class MainViewController: UIViewController {
                 self.windDirectionLabel.text = "Wind direction: "
                 self.windDirectionLabel.text! += current.currentWeather?.wind_dir ?? ""
                 
+                self.hourCollectionView.reloadData()
+                
                 print()
             }
         }

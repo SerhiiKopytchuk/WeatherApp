@@ -18,7 +18,12 @@ class ChangeCityViewController: UIViewController {
         
         UserDefaults.standard.set([], forKey: "citiesArray")
         cityTableView.reloadData()
-
+        
+        do{
+            cityTextField.text = UserDefaults.standard.value(forKey: "currentCity") as? String
+        }
+        
+        
         
     }
     
