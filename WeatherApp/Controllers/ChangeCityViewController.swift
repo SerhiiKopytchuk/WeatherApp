@@ -24,7 +24,12 @@ class ChangeCityViewController: UIViewController {
     
    
     
-    @IBAction func sendButtonDidPressed(_ sender: UIButton) {
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func cityTextFieldValueChanged(_ sender: UITextField) {
         Manager.shared.getCities(cityStartName: cityTextField.text ?? "") { current in
             DispatchQueue.main.async {
                 UserDefaults.standard.set(current, forKey: "citiesArray")
@@ -32,7 +37,6 @@ class ChangeCityViewController: UIViewController {
             }
         }
     }
-    
     
     
 
@@ -58,5 +62,13 @@ extension ChangeCityViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.cityTableView.deselectRow(at: indexPath, animated: true)
+        guard let citiesArray = UserDefaults.standard.value(forKey: "citiesArray") as? [String] else{
+            return
+        }
+        UserDefaults.standard.set(citiesArray[indexPath.row], forKey: "currentCity")
+        //realize delegate method
+        navigationController?.popViewController(animated: true)
+    }
 }

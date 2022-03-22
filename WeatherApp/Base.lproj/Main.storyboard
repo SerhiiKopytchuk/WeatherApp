@@ -401,25 +401,31 @@
                                 <rect key="frame" x="20" y="44" width="56" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="hCD-DZ-lxc" eventType="touchUpInside" id="gD6-m1-w0e"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZmE-bz-iQd">
                                 <rect key="frame" x="20" y="105" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="cityTextFieldValueChanged:" destination="hCD-DZ-lxc" eventType="editingChanged" id="mKB-bd-F3c"/>
+                                </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-SL-xcp">
-                                <rect key="frame" x="10" y="147" width="394" height="715"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-SL-xcp">
+                                <rect key="frame" x="20" y="147" width="374" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityTableViewCell" id="4ye-cm-zNb" customClass="cityTableViewCell" customModule="WeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="394" height="40"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ye-cm-zNb" id="eh2-9c-omw">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIO-f7-bsO">
-                                                    <rect key="frame" x="10" y="9.5" width="42" height="21"/>
+                                                    <rect key="frame" x="10" y="14.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -440,14 +446,6 @@
                                     <outlet property="delegate" destination="hCD-DZ-lxc" id="HG9-6h-oOA"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcV-i2-UAN">
-                                <rect key="frame" x="338" y="44" width="56" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="send"/>
-                                <connections>
-                                    <action selector="sendButtonDidPressed:" destination="hCD-DZ-lxc" eventType="touchUpInside" id="Mo8-VB-gAp"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CgA-PZ-FkC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -455,14 +453,11 @@
                             <constraint firstItem="kfg-pe-6O8" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="10r-r6-N29"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="bottom" secondItem="cjT-SL-xcp" secondAttribute="bottom" id="BxL-3r-NMb"/>
                             <constraint firstItem="ZmE-bz-iQd" firstAttribute="top" secondItem="kfg-pe-6O8" secondAttribute="bottom" constant="30" id="Cwe-Vp-hAV"/>
-                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="zcV-i2-UAN" secondAttribute="trailing" constant="20" id="EuR-Og-qCF"/>
-                            <constraint firstItem="zcV-i2-UAN" firstAttribute="top" secondItem="kfg-pe-6O8" secondAttribute="top" id="GIs-Av-kWN"/>
-                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="cjT-SL-xcp" secondAttribute="trailing" constant="10" id="K4f-HI-QAY"/>
+                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="cjT-SL-xcp" secondAttribute="trailing" constant="20" id="K4f-HI-QAY"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="ZmE-bz-iQd" secondAttribute="trailing" constant="20" id="S2b-vA-1es"/>
-                            <constraint firstItem="cjT-SL-xcp" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="10" id="cKK-en-hLR"/>
+                            <constraint firstItem="cjT-SL-xcp" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="cKK-en-hLR"/>
                             <constraint firstItem="cjT-SL-xcp" firstAttribute="top" secondItem="ZmE-bz-iQd" secondAttribute="bottom" constant="8" symbolic="YES" id="efW-vX-kTz"/>
                             <constraint firstItem="kfg-pe-6O8" firstAttribute="top" secondItem="CgA-PZ-FkC" secondAttribute="top" id="vgS-A0-5FI"/>
-                            <constraint firstItem="zcV-i2-UAN" firstAttribute="bottom" secondItem="kfg-pe-6O8" secondAttribute="bottom" id="yB9-Wp-rbH"/>
                             <constraint firstItem="ZmE-bz-iQd" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="yaN-sP-TJi"/>
                         </constraints>
                     </view>

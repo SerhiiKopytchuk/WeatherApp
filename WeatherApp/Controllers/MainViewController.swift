@@ -23,6 +23,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        if UserDefaults.standard.value(forKey: "currentCity") == nil {
+            UserDefaults.standard.set("London", forKey: "currentCity")
+        }
+        
         Manager.shared.sendRequest { current in
             DispatchQueue.main.async {
                 self.temperatureLabel.text = String(current.currentWeather?.tempC ?? 0.0) + "˚C"
