@@ -79,7 +79,14 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == self.dayCollectionView{
             return 3
         }else{
-            return 18
+            var count = 0
+            let date = Date.now
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH"
+            let currentHour = formatter.string(from: date)
+            count = 24 - (Int(currentHour) ?? 0)
+            
+            return count
         }
         
     }
@@ -116,15 +123,22 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             return cell
         }else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HoursCollectionViewCell", for: indexPath) as? HoursCollectionViewCell else {return UICollectionViewCell()}
+            var count = 0
+            let date = Date.now
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH"
+            let currentHour = formatter.string(from: date)
+            count = 24 - (Int(currentHour) ?? 0)
+            
             Manager.shared.sendRequest { current in
                 DispatchQueue.main.async {
-                    var iconStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 5].condition?.icon
+                    var iconStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon
                     iconStr?.removeLast(4)
                     iconStr?.removeFirst(35)
                     let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
                     cell.imageView.image = UIImage(named: iconName ?? "Sunny")
                     
-                    let dateStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 5].time
+                    let dateStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count ].time
                     let formatter = DateFormatter()
                     formatter.locale = Locale(identifier: "en_US_POSIX")
                     
@@ -134,7 +148,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     let time = formatter.string(from: date ?? Date())
                     cell.timeLabel.text = time
                     
-                    var temp = String(current.forecast?.forecastDay?[0].hour?[indexPath.item + 5].tempC ?? 0.0)
+                    var temp = String(current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].tempC ?? 0.0)
                     temp += "˚C"
                     cell.temperatureLabel.text = temp
                     
