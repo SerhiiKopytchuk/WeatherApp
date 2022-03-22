@@ -25,6 +25,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         
+        starSetup()
+        
+
+    }
+    
+    @IBAction func changeCityButtonPressed(_ sender: UIButton) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeCityViewController") as? ChangeCityViewController else{ return }
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func starSetup(){
+        
         if UserDefaults.standard.value(forKey: "currentCity") == nil {
             UserDefaults.standard.set("London", forKey: "currentCity")
         }
@@ -48,13 +60,6 @@ class MainViewController: UIViewController {
         dayCollectionView.delegate = self
         dayCollectionView.dataSource = self
     }
-    
-    @IBAction func changeCityButtonPressed(_ sender: UIButton) {
-        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeCityViewController") as? ChangeCityViewController else{ return }
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    
 }
 
 extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
