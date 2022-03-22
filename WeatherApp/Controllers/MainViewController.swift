@@ -56,6 +56,7 @@ class MainViewController: UIViewController {
                 self.windDirectionLabel.text! += current.currentWeather?.wind_dir ?? ""
                 
                 self.hourCollectionView.reloadData()
+                self.dayCollectionView.reloadData()
                 
                 print()
             }
