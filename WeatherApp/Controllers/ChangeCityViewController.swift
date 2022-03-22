@@ -68,7 +68,7 @@ extension ChangeCityViewController: UITableViewDelegate, UITableViewDataSource{
             return
         }
         UserDefaults.standard.set(citiesArray[indexPath.row], forKey: "currentCity")
-        //realize delegate method
+        NotificationCenter.default.post(name: .internetDown, object: nil, userInfo: nil)
         navigationController?.popViewController(animated: true)
     }
 }

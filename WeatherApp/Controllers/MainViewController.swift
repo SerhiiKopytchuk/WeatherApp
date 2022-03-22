@@ -24,10 +24,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(starSetup), name: .internetDown, object: nil)
         
         starSetup()
         
-
+        
     }
     
     @IBAction func changeCityButtonPressed(_ sender: UIButton) {
@@ -35,7 +36,7 @@ class MainViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    func starSetup(){
+    @objc func starSetup(){
         
         if UserDefaults.standard.value(forKey: "currentCity") == nil {
             UserDefaults.standard.set("London", forKey: "currentCity")
