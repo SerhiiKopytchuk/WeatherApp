@@ -43,6 +43,11 @@ class MainViewController: UIViewController {
         dayCollectionView.dataSource = self
     }
     
+    @IBAction func changeCityButtonPressed(_ sender: UIButton) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeCityViewController") as? ChangeCityViewController else{ return }
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     
 }
 

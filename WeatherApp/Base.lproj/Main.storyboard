@@ -151,13 +151,24 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apt-y2-gVu">
+                                                <rect key="frame" x="155" y="10" width="104" height="29"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Chnage City"/>
+                                                <connections>
+                                                    <action selector="changeCityButtonPressed:" destination="INx-om-NKN" eventType="touchUpInside" id="C8U-bs-CLK"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="0wS-ZU-4Hx" secondAttribute="trailing" constant="20" id="73n-YV-5wT"/>
                                             <constraint firstItem="jyT-Kh-S1W" firstAttribute="top" secondItem="0wS-ZU-4Hx" secondAttribute="bottom" constant="30" id="8fj-uX-RqK"/>
+                                            <constraint firstItem="apt-y2-gVu" firstAttribute="top" secondItem="0wS-ZU-4Hx" secondAttribute="top" id="9kD-de-Po7"/>
                                             <constraint firstAttribute="trailing" secondItem="jyT-Kh-S1W" secondAttribute="trailing" constant="10" id="Adf-Hg-Kun"/>
                                             <constraint firstItem="jyT-Kh-S1W" firstAttribute="leading" secondItem="lbd-Va-Ime" secondAttribute="leading" constant="10" id="M7m-BF-EcP"/>
+                                            <constraint firstItem="apt-y2-gVu" firstAttribute="centerX" secondItem="lbd-Va-Ime" secondAttribute="centerX" id="Oru-I0-BmA"/>
+                                            <constraint firstItem="apt-y2-gVu" firstAttribute="bottom" secondItem="0wS-ZU-4Hx" secondAttribute="bottom" id="SUf-Qy-yQA"/>
                                             <constraint firstAttribute="bottom" secondItem="jyT-Kh-S1W" secondAttribute="bottom" id="X9N-Of-iEz"/>
                                             <constraint firstAttribute="height" constant="269" id="pZB-1b-SZI"/>
                                             <constraint firstItem="0wS-ZU-4Hx" firstAttribute="top" secondItem="lbd-Va-Ime" secondAttribute="top" constant="10" id="tNf-PQ-YOv"/>
@@ -380,7 +391,8 @@
         <!--Change City View Controller-->
         <scene sceneID="u4O-S7-dXj">
             <objects>
-                <viewController id="hCD-DZ-lxc" customClass="ChangeCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="abM-ly-wi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ChangeCityViewController" id="hCD-DZ-lxc" customClass="ChangeCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T1G-nB-Mem">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,23 +406,20 @@
                                 <rect key="frame" x="20" y="105" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="cityTextFieldValueChanged:" destination="sIP-X2-qSY" eventType="valueChanged" id="5dV-tv-qyq"/>
-                                </connections>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-SL-xcp">
-                                <rect key="frame" x="20" y="147" width="374" height="715"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-SL-xcp">
+                                <rect key="frame" x="10" y="147" width="394" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableViewCell" id="4ye-cm-zNb" customClass="CityTableViewCell" customModule="WeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="374" height="30"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityTableViewCell" id="4ye-cm-zNb" customClass="cityTableViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="394" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4ye-cm-zNb" id="eh2-9c-omw">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIO-f7-bsO">
-                                                    <rect key="frame" x="10" y="4.5" width="42" height="21"/>
+                                                    <rect key="frame" x="10" y="9.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -427,10 +436,18 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="hCD-DZ-lxc" id="aCY-Ib-NcH"/>
-                                    <outlet property="delegate" destination="hCD-DZ-lxc" id="fnf-gN-8jR"/>
+                                    <outlet property="dataSource" destination="hCD-DZ-lxc" id="HcQ-Rf-2zJ"/>
+                                    <outlet property="delegate" destination="hCD-DZ-lxc" id="HG9-6h-oOA"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcV-i2-UAN">
+                                <rect key="frame" x="338" y="44" width="56" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="send"/>
+                                <connections>
+                                    <action selector="sendButtonDidPressed:" destination="hCD-DZ-lxc" eventType="touchUpInside" id="Mo8-VB-gAp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CgA-PZ-FkC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -438,17 +455,22 @@
                             <constraint firstItem="kfg-pe-6O8" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="10r-r6-N29"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="bottom" secondItem="cjT-SL-xcp" secondAttribute="bottom" id="BxL-3r-NMb"/>
                             <constraint firstItem="ZmE-bz-iQd" firstAttribute="top" secondItem="kfg-pe-6O8" secondAttribute="bottom" constant="30" id="Cwe-Vp-hAV"/>
-                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="cjT-SL-xcp" secondAttribute="trailing" constant="20" id="K4f-HI-QAY"/>
+                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="zcV-i2-UAN" secondAttribute="trailing" constant="20" id="EuR-Og-qCF"/>
+                            <constraint firstItem="zcV-i2-UAN" firstAttribute="top" secondItem="kfg-pe-6O8" secondAttribute="top" id="GIs-Av-kWN"/>
+                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="cjT-SL-xcp" secondAttribute="trailing" constant="10" id="K4f-HI-QAY"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="ZmE-bz-iQd" secondAttribute="trailing" constant="20" id="S2b-vA-1es"/>
-                            <constraint firstItem="cjT-SL-xcp" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="cKK-en-hLR"/>
+                            <constraint firstItem="cjT-SL-xcp" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="10" id="cKK-en-hLR"/>
                             <constraint firstItem="cjT-SL-xcp" firstAttribute="top" secondItem="ZmE-bz-iQd" secondAttribute="bottom" constant="8" symbolic="YES" id="efW-vX-kTz"/>
                             <constraint firstItem="kfg-pe-6O8" firstAttribute="top" secondItem="CgA-PZ-FkC" secondAttribute="top" id="vgS-A0-5FI"/>
+                            <constraint firstItem="zcV-i2-UAN" firstAttribute="bottom" secondItem="kfg-pe-6O8" secondAttribute="bottom" id="yB9-Wp-rbH"/>
                             <constraint firstItem="ZmE-bz-iQd" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="yaN-sP-TJi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityTableView" destination="cjT-SL-xcp" id="nwX-9e-dMl"/>
+                        <outlet property="cityTextField" destination="ZmE-bz-iQd" id="MO7-wS-HRA"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="abM-ly-wi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="sIP-X2-qSY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="510" y="-817"/>
         </scene>
