@@ -52,7 +52,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == self.dayCollectionView{
             return CGSize(width: self.dayCollectionView.frame.width/4, height: 200)
         }else{
-            return CGSize(width: hourCollectionView.frame.width/3, height: hourCollectionView.frame.width/8)
+            return CGSize(width: hourCollectionView.frame.width/3, height: 126)
         }
         
     }

@@ -185,4 +185,34 @@ class Manager{
         task.resume()
     }
     
+    func getCities(cityStartName:String, competition: @escaping (_ current:[String])->()){
+        
+        
+        
+        guard let url = URL(string: "https://api.weatherapi.com/v1/search.json?key=d0a9ecd662d7487b911111422221903&q=\(cityStartName)") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error == nil, let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data) as? [[String:Any]] {
+                        var citiesName:[String]? = []
+                        for object in json{
+                            if let name = object["name"] as? String{
+                                citiesName?.append(name)
+                            }
+                        }
+                        competition(citiesName ?? [])
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        task.resume()
+    }
 }
