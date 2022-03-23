@@ -26,8 +26,10 @@ class ForecastDay{
 class HourlyDayInfo{
     var time:String? = ""
     var tempC:Double? = 0.0
+    var tempF:Double? = 0.0
     var condition:Condition? = nil
     var windKph:Double? = nil
+    var windMph:Double? = nil
     var feelsLike:Double? = nil
 }
 
@@ -35,6 +37,8 @@ class HourlyDayInfo{
 class DayInfo{
     var maxTempC:Double? = 0.0
     var minTempC:Double? = 0.0
+    var maxTempF:Double? = 0.0
+    var minTempF:Double? = 0.0
     var condition:Condition? = nil
 }
 
@@ -50,8 +54,11 @@ class LocationWeather{
 
 class Current{
     var tempC:Double? = 0.0
+    var tempF:Double? = 0.0
     var wind_kph:Double? = 0.0
+    var wind_mph:Double? = 0.0
     var wind_dir:String? = ""
-    var feelsLike:Double? = 0.0
+    var feelsLikeC:Double? = 0.0
+    var feelsLikeF:Double? = 0.0
 }
 

@@ -46,6 +46,9 @@
                                                 <rect key="frame" x="316" y="10" width="78" height="29"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Settings"/>
+                                                <connections>
+                                                    <action selector="settingsButtonPressed:" destination="INx-om-NKN" eventType="touchUpInside" id="4U8-6p-Bbn"/>
+                                                </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jyT-Kh-S1W">
                                                 <rect key="frame" x="10" y="69" width="394" height="200"/>
@@ -273,7 +276,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="day:230" translatesAutoresizingMaskIntoConstraints="NO" id="M5n-K6-fRJ">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M5n-K6-fRJ">
                                                                     <rect key="frame" x="34.5" y="57" width="50" height="50"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="50" id="hG5-2F-LIV"/>
@@ -381,9 +384,89 @@
                     <view key="view" contentMode="scaleToFill" id="0Vc-1o-3ZG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22L-bJ-fiT">
+                                <rect key="frame" x="20" y="44" width="56" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Back"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Lct-i3-RlI" eventType="touchUpInside" id="5e6-xa-h2J"/>
+                                    <action selector="backButtonPressed:" destination="hCD-DZ-lxc" eventType="touchUpInside" id="kee-WP-sVa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tempreature:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8q-BU-nSi">
+                                <rect key="frame" x="20" y="105" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eDV-CW-kwx">
+                                <rect key="frame" x="305" y="100" width="69" height="32"/>
+                                <segments>
+                                    <segment title="˚C"/>
+                                    <segment title="˚F"/>
+                                </segments>
+                                <connections>
+                                    <action selector="temperatureSegmentChanged:" destination="Lct-i3-RlI" eventType="valueChanged" id="VQH-f9-Ejw"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wind speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fv-Hr-ecW">
+                                <rect key="frame" x="20" y="156" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tMC-yv-7AA">
+                                <rect key="frame" x="281" y="151" width="93" height="32"/>
+                                <segments>
+                                    <segment title="kph"/>
+                                    <segment title="mph"/>
+                                </segments>
+                                <connections>
+                                    <action selector="windSpeedValueChnaged:" destination="Lct-i3-RlI" eventType="valueChanged" id="6sC-gO-Xj2"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqw-cg-5zs">
+                                <rect key="frame" x="20" y="207" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xGW-mx-aWi">
+                                <rect key="frame" x="297" y="202" width="77" height="32"/>
+                                <segments>
+                                    <segment title="mb"/>
+                                    <segment title="in"/>
+                                </segments>
+                                <connections>
+                                    <action selector="presureChanged:" destination="Lct-i3-RlI" eventType="valueChanged" id="X4E-SK-GDt"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vTM-JI-kHi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tMC-yv-7AA" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" id="1KL-kx-CVZ"/>
+                            <constraint firstItem="Z8q-BU-nSi" firstAttribute="leading" secondItem="vTM-JI-kHi" secondAttribute="leading" constant="20" id="3rJ-GG-r4v"/>
+                            <constraint firstItem="22L-bJ-fiT" firstAttribute="leading" secondItem="vTM-JI-kHi" secondAttribute="leading" constant="20" id="82A-QS-DW6"/>
+                            <constraint firstItem="Z8q-BU-nSi" firstAttribute="top" secondItem="22L-bJ-fiT" secondAttribute="bottom" constant="30" id="HQC-Db-tMv"/>
+                            <constraint firstItem="tMC-yv-7AA" firstAttribute="centerY" secondItem="7fv-Hr-ecW" secondAttribute="centerY" id="VHd-fT-EVS"/>
+                            <constraint firstItem="vTM-JI-kHi" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" constant="40" id="as3-0u-Nsd"/>
+                            <constraint firstItem="zqw-cg-5zs" firstAttribute="top" secondItem="7fv-Hr-ecW" secondAttribute="bottom" constant="30" id="bPN-fO-Jhv"/>
+                            <constraint firstItem="xGW-mx-aWi" firstAttribute="centerY" secondItem="zqw-cg-5zs" secondAttribute="centerY" id="evh-nc-m3L"/>
+                            <constraint firstItem="zqw-cg-5zs" firstAttribute="leading" secondItem="7fv-Hr-ecW" secondAttribute="leading" id="eyW-E9-Mtu"/>
+                            <constraint firstItem="xGW-mx-aWi" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" id="hqo-uY-Arm"/>
+                            <constraint firstItem="7fv-Hr-ecW" firstAttribute="top" secondItem="Z8q-BU-nSi" secondAttribute="bottom" constant="30" id="mLa-Tk-7gD"/>
+                            <constraint firstItem="eDV-CW-kwx" firstAttribute="centerY" secondItem="Z8q-BU-nSi" secondAttribute="centerY" id="pBT-Dm-Hkg"/>
+                            <constraint firstItem="7fv-Hr-ecW" firstAttribute="leading" secondItem="Z8q-BU-nSi" secondAttribute="leading" id="tss-HT-L7N"/>
+                            <constraint firstItem="22L-bJ-fiT" firstAttribute="top" secondItem="vTM-JI-kHi" secondAttribute="top" id="yVP-QH-yd4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pressureSegment" destination="xGW-mx-aWi" id="XjZ-4b-Gaj"/>
+                        <outlet property="temperatureSegment" destination="eDV-CW-kwx" id="YgY-g3-0fh"/>
+                        <outlet property="windSpeedSegment" destination="tMC-yv-7AA" id="NsY-Yd-khY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4UX-OE-ujf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -392,7 +475,6 @@
         <!--Change City View Controller-->
         <scene sceneID="u4O-S7-dXj">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="abM-ly-wi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ChangeCityViewController" id="hCD-DZ-lxc" customClass="ChangeCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T1G-nB-Mem">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -467,12 +549,12 @@
                         <outlet property="cityTextField" destination="ZmE-bz-iQd" id="MO7-wS-HRA"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="abM-ly-wi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="510" y="-817"/>
         </scene>
     </scenes>
     <resources>
-        <image name="day:230" width="21.333333969116211" height="21.333333969116211"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

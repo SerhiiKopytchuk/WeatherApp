@@ -18,7 +18,6 @@
 		405E10CE27E5F3B100F3EAC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 405E10CD27E5F3B100F3EAC2 /* Assets.xcassets */; };
 		405E10D127E5F3B100F3EAC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 405E10CF27E5F3B100F3EAC2 /* LaunchScreen.storyboard */; };
 		405E10D927E6010400F3EAC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10D827E6010400F3EAC2 /* SettingsViewController.swift */; };
-		405E10DD27E6015700F3EAC2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10DC27E6015700F3EAC2 /* AppSettings.swift */; };
 		405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10E127E603A100F3EAC2 /* DaysCollectionViewCell.swift */; };
 		405E10E427E63DB700F3EAC2 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10E327E63DB700F3EAC2 /* Manager.swift */; };
 		405E10E827E63E7500F3EAC2 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10E727E63E7500F3EAC2 /* CurrentWeather.swift */; };
@@ -38,7 +37,6 @@
 		405E10D027E5F3B100F3EAC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		405E10D227E5F3B100F3EAC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		405E10D827E6010400F3EAC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		405E10DC27E6015700F3EAC2 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		405E10E127E603A100F3EAC2 /* DaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		405E10E327E63DB700F3EAC2 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		405E10E727E63E7500F3EAC2 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 		405E10DB27E6014A00F3EAC2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				405E10DC27E6015700F3EAC2 /* AppSettings.swift */,
 				405E10E727E63E7500F3EAC2 /* CurrentWeather.swift */,
 			);
 			path = Models;
@@ -200,7 +197,6 @@
 				405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */,
 				405E10E427E63DB700F3EAC2 /* Manager.swift in Sources */,
 				405E10D927E6010400F3EAC2 /* SettingsViewController.swift in Sources */,
-				405E10DD27E6015700F3EAC2 /* AppSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

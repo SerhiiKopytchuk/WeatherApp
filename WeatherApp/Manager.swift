@@ -59,12 +59,24 @@ class Manager{
                             _current.tempC = tempC
                         }
                         
+                        if let tempF = current["temp_f"] as? Double{
+                            _current.tempF = tempF
+                        }
+                        
                         if let windKph = current["wind_kph"] as? Double{
                             _current.wind_kph = windKph
                         }
                         
-                        if let feelsLike = current["feelslike_c"] as? Double{
-                            _current.feelsLike = feelsLike
+                        if let windMph = current["wind_mph"] as? Double{
+                            _current.wind_mph = windMph
+                        }
+                        
+                        if let feelsLikeC = current["feelslike_c"] as? Double{
+                            _current.feelsLikeC = feelsLikeC
+                        }
+                        
+                        if let feelsLikeF = current["feelslike_f"] as? Double{
+                            _current.feelsLikeF = feelsLikeF
                         }
                         
                         if let windDir = current["wind_dir"] as? String{
@@ -104,6 +116,14 @@ class Manager{
                                 dayInf.minTempC = minTempC
                             }
                             
+                            if let maxTempF = day["maxtemp_f"] as? Double{
+                                dayInf.maxTempF = maxTempF
+                            }
+                            
+                            if let minTempF = day["mintemp_f"] as? Double{
+                                dayInf.minTempF = minTempF
+                            }
+                            
                             _forecast.day = dayInf
                             
                             let _cond = Condition()
@@ -137,6 +157,10 @@ class Manager{
                                     hourInf.tempC = tempC
                                 }
                                 
+                                if let tempF = hour["temp_f"] as? Double{
+                                    hourInf.tempF = tempF
+                                }
+                                
                                 let condition = Condition()
                                 guard let _condition = hour["condition"] as? [String:Any] else {
                                     return
@@ -153,6 +177,10 @@ class Manager{
                                 
                                 if let windKph = hour["wind_kph"] as? Double{
                                     hourInf.windKph = windKph
+                                }
+                                
+                                if let windMph = hour["wind_mph"] as? Double{
+                                    hourInf.windMph = windMph
                                 }
                                 
                                 if let feelsLike = hour["feelslike_c"] as? Double{

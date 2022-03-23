@@ -31,6 +31,13 @@ class MainViewController: UIViewController {
         
     }
     
+    @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController else{
+            return
+        }
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @IBAction func changeCityButtonPressed(_ sender: UIButton) {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: "ChangeCityViewController") as? ChangeCityViewController else{ return }
         navigationController?.pushViewController(controller, animated: true)
@@ -49,7 +56,7 @@ class MainViewController: UIViewController {
                 self.countryLabel.text = current.locationWeather?.country
                 
                 self.feelsLikeLabel.text = "Feels like: "
-                self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLike ?? 0.0)
+                self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeC ?? 0.0)
                 self.windSpeedLabel.text = "Wind Speed: "
                 self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0)
                 self.windDirectionLabel.text = "Wind direction: "
