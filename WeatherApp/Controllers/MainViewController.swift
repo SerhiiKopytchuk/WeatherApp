@@ -51,14 +51,47 @@ class MainViewController: UIViewController {
         
         Manager.shared.sendRequest { current in
             DispatchQueue.main.async {
-                self.temperatureLabel.text = String(current.currentWeather?.tempC ?? 0.0) + "˚C"
+                guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
+                    return
+                }
                 self.cityName.text = current.locationWeather?.name
                 self.countryLabel.text = current.locationWeather?.country
                 
                 self.feelsLikeLabel.text = "Feels like: "
-                self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeC ?? 0.0)
                 self.windSpeedLabel.text = "Wind Speed: "
-                self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0)
+                
+                
+                switch tempType{
+                case "C":
+                    self.temperatureLabel.text = String(current.currentWeather?.tempC ?? 0.0) + "˚C"
+                    self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeC ?? 0.0) + "˚C"
+                case "F":
+                    self.temperatureLabel.text = String(current.currentWeather?.tempF ?? 0.0) + "˚F"
+                    self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeF ?? 0.0) + "˚F"
+                default:
+                    self.temperatureLabel.text = String(current.currentWeather?.tempC ?? 0.0) + "˚C"
+                    self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeC ?? 0.0) + "˚C"
+                }
+                
+                guard let windType = UserDefaults.standard.value(forKey: "windSpeedType") as? String else{
+                    return
+                }
+                
+                switch windType{
+                case "kph":
+                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + "kph"
+                case "mph":
+                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_mph ?? 0.0) + "mph"
+                default:
+                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + "kph"
+
+                }
+               
+                
+               
+               
+                
+                
                 self.windDirectionLabel.text = "Wind direction: "
                 self.windDirectionLabel.text! += current.currentWeather?.wind_dir ?? ""
                 
@@ -106,8 +139,23 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DaysCollectionViewCell", for: indexPath) as? DaysCollectionViewCell else {return UICollectionViewCell()}
             Manager.shared.sendRequest { current in
                 DispatchQueue.main.async {
-                    cell.minTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.minTempC ?? 0)
-                    cell.maxTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.maxTempC ?? 0)
+                    guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
+                        return
+                    }
+                    
+                    switch tempType{
+                    case "C":
+                        cell.minTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.minTempC ?? 0)
+                        cell.maxTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.maxTempC ?? 0)
+                    case "F":
+                        cell.minTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.minTempF ?? 0)
+                        cell.maxTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.maxTempF ?? 0)
+                    default:
+                        cell.minTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.minTempC ?? 0)
+                        cell.maxTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.maxTempC ?? 0)
+                    }
+                    
+                   
                     
                     var iconStr = current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon
                     iconStr?.removeLast(4)
@@ -142,6 +190,25 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             
             Manager.shared.sendRequest { current in
                 DispatchQueue.main.async {
+                    
+                    guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
+                        return
+                    }
+                    
+                    switch tempType{
+                    case "C":
+                        var temp = String(current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].tempC ?? 0.0)
+                        temp += "˚C"
+                        cell.temperatureLabel.text = temp
+                    case "F":
+                        var temp = String(current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].tempF ?? 0.0)
+                        temp += "˚F"
+                        cell.temperatureLabel.text = temp
+                    default:
+                        var temp = String(current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].tempC ?? 0.0)
+                        temp += "˚C"
+                        cell.temperatureLabel.text = temp
+                    }
                     var iconStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon
                     iconStr?.removeLast(4)
                     iconStr?.removeFirst(35)
@@ -157,11 +224,6 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     formatter.dateFormat = "HH:mm"
                     let time = formatter.string(from: date ?? Date())
                     cell.timeLabel.text = time
-                    
-                    var temp = String(current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].tempC ?? 0.0)
-                    temp += "˚C"
-                    cell.temperatureLabel.text = temp
-                    
                 }
             }
             return cell

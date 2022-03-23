@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .internetDown, object: nil, userInfo: nil)
         navigationController?.popViewController(animated: true)
     }
     
