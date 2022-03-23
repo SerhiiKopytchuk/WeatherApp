@@ -426,22 +426,6 @@
                                     <action selector="windSpeedValueChnaged:" destination="Lct-i3-RlI" eventType="valueChanged" id="6sC-gO-Xj2"/>
                                 </connections>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pressure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqw-cg-5zs">
-                                <rect key="frame" x="20" y="207" width="67" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xGW-mx-aWi">
-                                <rect key="frame" x="297" y="202" width="77" height="32"/>
-                                <segments>
-                                    <segment title="mb"/>
-                                    <segment title="in"/>
-                                </segments>
-                                <connections>
-                                    <action selector="presureChanged:" destination="Lct-i3-RlI" eventType="valueChanged" id="X4E-SK-GDt"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vTM-JI-kHi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -452,10 +436,6 @@
                             <constraint firstItem="Z8q-BU-nSi" firstAttribute="top" secondItem="22L-bJ-fiT" secondAttribute="bottom" constant="30" id="HQC-Db-tMv"/>
                             <constraint firstItem="tMC-yv-7AA" firstAttribute="centerY" secondItem="7fv-Hr-ecW" secondAttribute="centerY" id="VHd-fT-EVS"/>
                             <constraint firstItem="vTM-JI-kHi" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" constant="40" id="as3-0u-Nsd"/>
-                            <constraint firstItem="zqw-cg-5zs" firstAttribute="top" secondItem="7fv-Hr-ecW" secondAttribute="bottom" constant="30" id="bPN-fO-Jhv"/>
-                            <constraint firstItem="xGW-mx-aWi" firstAttribute="centerY" secondItem="zqw-cg-5zs" secondAttribute="centerY" id="evh-nc-m3L"/>
-                            <constraint firstItem="zqw-cg-5zs" firstAttribute="leading" secondItem="7fv-Hr-ecW" secondAttribute="leading" id="eyW-E9-Mtu"/>
-                            <constraint firstItem="xGW-mx-aWi" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" id="hqo-uY-Arm"/>
                             <constraint firstItem="7fv-Hr-ecW" firstAttribute="top" secondItem="Z8q-BU-nSi" secondAttribute="bottom" constant="30" id="mLa-Tk-7gD"/>
                             <constraint firstItem="eDV-CW-kwx" firstAttribute="centerY" secondItem="Z8q-BU-nSi" secondAttribute="centerY" id="pBT-Dm-Hkg"/>
                             <constraint firstItem="7fv-Hr-ecW" firstAttribute="leading" secondItem="Z8q-BU-nSi" secondAttribute="leading" id="tss-HT-L7N"/>
@@ -463,7 +443,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="pressureSegment" destination="xGW-mx-aWi" id="XjZ-4b-Gaj"/>
                         <outlet property="temperatureSegment" destination="eDV-CW-kwx" id="YgY-g3-0fh"/>
                         <outlet property="windSpeedSegment" destination="tMC-yv-7AA" id="NsY-Yd-khY"/>
                     </connections>

@@ -79,9 +79,9 @@ class MainViewController: UIViewController {
                 
                 switch windType{
                 case "kph":
-                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + "kph"
+                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + " kph"
                 case "mph":
-                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_mph ?? 0.0) + "mph"
+                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_mph ?? 0.0) + " mph"
                 default:
                     self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + "kph"
 

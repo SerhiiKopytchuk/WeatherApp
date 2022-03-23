@@ -11,13 +11,34 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var temperatureSegment: UISegmentedControl!
     @IBOutlet weak var windSpeedSegment: UISegmentedControl!
-    @IBOutlet weak var pressureSegment: UISegmentedControl!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
+            return
+        }
+        switch tempType{
+        case "C":
+            temperatureSegment.selectedSegmentIndex = 0
+        case "F":
+            temperatureSegment.selectedSegmentIndex = 1
+        default:
+            break
+        }
+        
+        guard let WindSpeedType = UserDefaults.standard.value(forKey: "windSpeedType") as? String else{
+            return
+        }
+        switch WindSpeedType{
+        case "kph":
+            windSpeedSegment.selectedSegmentIndex = 0
+        case "mph":
+            windSpeedSegment.selectedSegmentIndex = 1
+        default:
+            break
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -46,16 +67,6 @@ class SettingsViewController: UIViewController {
             break
         }
     }
-    
-    @IBAction func presureChanged(_ sender: UISegmentedControl) {
-        switch pressureSegment.selectedSegmentIndex{
-        case 0:
-            UserDefaults.standard.set("mb", forKey: "pressureType")
-        case 1:
-            UserDefaults.standard.set("in", forKey: "pressureType")
-        default:
-            break
-        }
-    }
+
     
 }
