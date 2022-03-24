@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var temperatureSegment: UISegmentedControl!
     @IBOutlet weak var windSpeedSegment: UISegmentedControl!
     
@@ -67,6 +67,6 @@ class SettingsViewController: UIViewController {
             break
         }
     }
-
+    
     
 }

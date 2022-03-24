@@ -30,7 +30,7 @@ class Manager{
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data) as? [String:Any] {
                         
-                      
+                        
                         
                         guard let location = json["location"] as? [String:Any] else {
                             return
@@ -39,7 +39,7 @@ class Manager{
                             return
                         }
                         
-
+                        
                         
                         let _location = LocationWeather()
                         
@@ -103,7 +103,7 @@ class Manager{
                             if let date = object["date"] as? String{
                                 _forecast.date = date
                             }
-                                
+                            
                             guard let day = object["day"] as? [String:Any] else{
                                 return
                             }
@@ -192,7 +192,7 @@ class Manager{
                             }
                             
                             _forecast.hour = hourInfArr
-
+                            
                             forecastArr.append(_forecast)
                         }
                         

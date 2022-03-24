@@ -36,7 +36,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dl6-Mh-mGo">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dl6-Mh-mGo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbd-Va-Ime">
@@ -508,15 +508,25 @@
                                     <outlet property="delegate" destination="hCD-DZ-lxc" id="HG9-6h-oOA"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ma5-3s-cxg">
+                                <rect key="frame" x="323" y="44" width="71" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="current"/>
+                                <connections>
+                                    <action selector="currentLocationButtonPressed:" destination="hCD-DZ-lxc" eventType="touchUpInside" id="Snn-Dq-9iY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CgA-PZ-FkC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kfg-pe-6O8" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="10r-r6-N29"/>
+                            <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="Ma5-3s-cxg" secondAttribute="trailing" constant="20" id="718-z2-VxF"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="bottom" secondItem="cjT-SL-xcp" secondAttribute="bottom" id="BxL-3r-NMb"/>
                             <constraint firstItem="ZmE-bz-iQd" firstAttribute="top" secondItem="kfg-pe-6O8" secondAttribute="bottom" constant="30" id="Cwe-Vp-hAV"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="cjT-SL-xcp" secondAttribute="trailing" constant="20" id="K4f-HI-QAY"/>
                             <constraint firstItem="CgA-PZ-FkC" firstAttribute="trailing" secondItem="ZmE-bz-iQd" secondAttribute="trailing" constant="20" id="S2b-vA-1es"/>
+                            <constraint firstItem="Ma5-3s-cxg" firstAttribute="centerY" secondItem="kfg-pe-6O8" secondAttribute="centerY" id="cI0-Kn-2wY"/>
                             <constraint firstItem="cjT-SL-xcp" firstAttribute="leading" secondItem="CgA-PZ-FkC" secondAttribute="leading" constant="20" id="cKK-en-hLR"/>
                             <constraint firstItem="cjT-SL-xcp" firstAttribute="top" secondItem="ZmE-bz-iQd" secondAttribute="bottom" constant="8" symbolic="YES" id="efW-vX-kTz"/>
                             <constraint firstItem="kfg-pe-6O8" firstAttribute="top" secondItem="CgA-PZ-FkC" secondAttribute="top" id="vgS-A0-5FI"/>

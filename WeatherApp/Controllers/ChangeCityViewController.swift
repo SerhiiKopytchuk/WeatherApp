@@ -6,15 +6,31 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ChangeCityViewController: UIViewController {
+
+class ChangeCityViewController: UIViewController{
     
+    let locationManager = CLLocationManager()
+    
+    
+    
+    public var exposedLocation: CLLocation? {
+          return self.locationManager.location
+      }
     
     @IBOutlet weak var cityTableView: UITableView!
     @IBOutlet weak var cityTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+    
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
         
         UserDefaults.standard.set([], forKey: "citiesArray")
         cityTableView.reloadData()
@@ -27,7 +43,7 @@ class ChangeCityViewController: UIViewController {
         
     }
     
-   
+    
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -44,7 +60,25 @@ class ChangeCityViewController: UIViewController {
     }
     
     
+    
+    @IBAction func currentLocationButtonPressed(_ sender: UIButton) {
+        guard let locationCity = UserDefaults.standard.value(forKey:"locationCity") as? String else{
+            print("There no City")
+            return
+        }
+  
+        UserDefaults.standard.set(locationCity, forKey: "currentCity")
+        cityTextField.text = locationCity
+        NotificationCenter.default.post(name: .internetDown, object: nil, userInfo: nil)
+    }
+    
+    
 
+    
+
+    
+
+    
     
 }
 
@@ -75,5 +109,23 @@ extension ChangeCityViewController: UITableViewDelegate, UITableViewDataSource{
         UserDefaults.standard.set(citiesArray[indexPath.row], forKey: "currentCity")
         NotificationCenter.default.post(name: .internetDown, object: nil, userInfo: nil)
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ChangeCityViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location2D: CLLocationCoordinate2D = manager.location!.coordinate
+        
+        let geoCoder = CLGeocoder()
+        let location = CLLocation(latitude: location2D.latitude, longitude: location2D.longitude)
+
+        geoCoder.reverseGeocodeLocation(location, preferredLocale: Locale(identifier: Bundle.main.preferredLocalizations[0]), completionHandler: { (placemarks, _) -> Void in
+            
+            placemarks?.forEach { (placemark) in
+                if let city = placemark.locality {
+                    UserDefaults.standard.set(city, forKey: "locationCity")
+                }
+            }
+        })
     }
 }
