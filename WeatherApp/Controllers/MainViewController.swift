@@ -182,9 +182,11 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     
                     formatter.dateFormat = "yyyy-MM-dd"
                     let date = formatter.date(from: dateStr ?? "")
-                    formatter.dateFormat = "MMMM"
+                    
+                    formatter.dateFormat = "E"
+                    
                     let month = formatter.string(from: date ?? Date())
-                    cell.monthLabel.text = month
+                    cell.DayName.text = month
                     formatter.dateFormat = "dd"
                     let day = formatter.string(from: date ?? Date())
                     cell.dayLabel.text = day

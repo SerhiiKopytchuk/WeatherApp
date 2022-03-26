@@ -146,10 +146,10 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="143" height="203"/>
                                                         <connections>
+                                                            <outlet property="DayName" destination="opF-Ws-cFM" id="GmF-Hf-QNk"/>
                                                             <outlet property="dayLabel" destination="Xiy-2S-BWR" id="wBV-c5-QAA"/>
                                                             <outlet property="maxTemperatureLabel" destination="UtI-eR-qf6" id="DcL-dv-t9w"/>
                                                             <outlet property="minTemperatureLabel" destination="hhO-nW-DQT" id="MTh-U8-IFW"/>
-                                                            <outlet property="monthLabel" destination="opF-Ws-cFM" id="GmF-Hf-QNk"/>
                                                             <outlet property="weatherImageView" destination="kAF-Q8-Kqh" id="EuL-vD-laM"/>
                                                         </connections>
                                                     </collectionViewCell>
