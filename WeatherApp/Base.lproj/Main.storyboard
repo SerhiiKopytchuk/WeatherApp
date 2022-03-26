@@ -451,6 +451,61 @@
             </objects>
             <point key="canvasLocation" x="806" y="-152"/>
         </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="7I5-v9-Jo5">
+            <objects>
+                <viewController storyboardIdentifier="LoadingViewController" id="0rh-rm-SiP" customClass="LoadingViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QIb-3q-iet">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PuQ-Nq-ZwH">
+                                <rect key="frame" x="0.0" y="-156" width="414" height="1218"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IFS-g9-QeI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1218"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUE-f4-0TU">
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="1090"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Hz8-vN-iEc">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="1090"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="regular"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="4IW-3s-PAS">
+                                            <rect key="frame" x="188.5" y="590.5" width="37" height="37"/>
+                                            <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="4IW-3s-PAS" firstAttribute="centerX" secondItem="IFS-g9-QeI" secondAttribute="centerX" id="oAG-0f-ovr"/>
+                                        <constraint firstItem="4IW-3s-PAS" firstAttribute="centerY" secondItem="IFS-g9-QeI" secondAttribute="centerY" id="pxA-L0-UaV"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a5G-7X-8Gg"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PuQ-Nq-ZwH" firstAttribute="leading" secondItem="a5G-7X-8Gg" secondAttribute="leading" id="Fae-Td-8Fb"/>
+                            <constraint firstItem="a5G-7X-8Gg" firstAttribute="trailing" secondItem="PuQ-Nq-ZwH" secondAttribute="trailing" id="T4f-Os-al1"/>
+                            <constraint firstItem="PuQ-Nq-ZwH" firstAttribute="top" secondItem="a5G-7X-8Gg" secondAttribute="top" constant="-200" id="cX0-0D-j3g"/>
+                            <constraint firstItem="a5G-7X-8Gg" firstAttribute="bottom" secondItem="PuQ-Nq-ZwH" secondAttribute="bottom" constant="-200" id="urM-1m-CNC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadElement" destination="4IW-3s-PAS" id="v9Y-d8-Jbc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3r-jM-92h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-584" y="-846"/>
+        </scene>
         <!--Change City View Controller-->
         <scene sceneID="u4O-S7-dXj">
             <objects>

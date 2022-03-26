@@ -45,6 +45,16 @@ class MainViewController: UIViewController {
     
     @objc func starSetup(){
         
+        guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else{
+            return
+        }
+        
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        
+        self.present(controller, animated: true, completion: nil)
+        
+        
         if UserDefaults.standard.value(forKey: "currentCity") == nil {
             UserDefaults.standard.set("London", forKey: "currentCity")
         }
@@ -97,6 +107,8 @@ class MainViewController: UIViewController {
                 
                 self.hourCollectionView.reloadData()
                 self.dayCollectionView.reloadData()
+                
+                self.dismiss(animated: true)
                 
                 print()
             }

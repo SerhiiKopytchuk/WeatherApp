@@ -21,6 +21,7 @@
 		405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10E127E603A100F3EAC2 /* DaysCollectionViewCell.swift */; };
 		405E10E427E63DB700F3EAC2 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10E327E63DB700F3EAC2 /* Manager.swift */; };
 		405E10E827E63E7500F3EAC2 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405E10E727E63E7500F3EAC2 /* CurrentWeather.swift */; };
+		40A7765527EF1B0D00C1988F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A7765427EF1B0D00C1988F /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		405E10E127E603A100F3EAC2 /* DaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		405E10E327E63DB700F3EAC2 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		405E10E727E63E7500F3EAC2 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		40A7765427EF1B0D00C1988F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				405E10D827E6010400F3EAC2 /* SettingsViewController.swift */,
 				404284AD27EA13DD002A304A /* ChangeCityViewController.swift */,
 				404284B127EA5475002A304A /* Notifications.swift */,
+				40A7765427EF1B0D00C1988F /* LoadingViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */,
 				405E10E427E63DB700F3EAC2 /* Manager.swift in Sources */,
 				405E10D927E6010400F3EAC2 /* SettingsViewController.swift in Sources */,
+				40A7765527EF1B0D00C1988F /* LoadingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
