@@ -18,6 +18,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var feelsLikeLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var windDirectionLabel: UILabel!
+    @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    
     
     //create main object, that will give all info to all things
     
@@ -45,6 +48,10 @@ class MainViewController: UIViewController {
     
     @objc func starSetup(){
         
+        locationButton.setTitle("location".localized(), for: .normal)
+        settingsButton.setTitle("settings".localized(), for: .normal)
+
+        
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else{
             return
         }
@@ -67,9 +74,9 @@ class MainViewController: UIViewController {
                 self.cityName.text = current.locationWeather?.name
                 self.countryLabel.text = current.locationWeather?.country
                 
-                self.feelsLikeLabel.text = "Feels like: "
-                self.windSpeedLabel.text = "Wind Speed: "
-                
+                self.feelsLikeLabel.text = "feelsLike".localized()
+                self.windSpeedLabel.text = "windSpeed".localized()
+
                 
                 switch tempType{
                 case "C":
@@ -102,7 +109,7 @@ class MainViewController: UIViewController {
                
                 
                 
-                self.windDirectionLabel.text = "Wind direction: "
+                self.windDirectionLabel.text = "windDirection".localized()
                 self.windDirectionLabel.text! += current.currentWeather?.wind_dir ?? ""
                 
                 self.hourCollectionView.reloadData()
@@ -178,18 +185,20 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     let dateStr = current.forecast?.forecastDay?[indexPath.item].date
                     
                     let formatter = DateFormatter()
-                    formatter.locale = Locale(identifier: "en_US_POSIX")
+
                     
                     formatter.dateFormat = "yyyy-MM-dd"
                     let date = formatter.date(from: dateStr ?? "")
                     
                     formatter.dateFormat = "E"
                     
-                    let month = formatter.string(from: date ?? Date())
-                    cell.DayName.text = month
-                    formatter.dateFormat = "dd"
                     let day = formatter.string(from: date ?? Date())
-                    cell.dayLabel.text = day
+                    cell.DayName.text = day
+                    cell.DayName.text? += "."
+                    
+                    formatter.dateFormat = "dd"
+                    let dayNum = formatter.string(from: date ?? Date())
+                    cell.dayLabel.text = dayNum
                 }
             }
             return cell

@@ -12,10 +12,22 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var temperatureSegment: UISegmentedControl!
     @IBOutlet weak var windSpeedSegment: UISegmentedControl!
     
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        temperatureLabel.text = "temperature".localized()
+        windSpeedLabel.text = "windSpeed".localized()
+        backButton.setTitle("back".localized(), for: .normal)
+        
+        startSettings()
+    }
+    
+    func startSettings(){
         guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
             return
         }

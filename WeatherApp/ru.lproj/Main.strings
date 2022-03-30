@@ -1,0 +1,81 @@
+
+/* Class = "UIButton"; configuration.title = "Settings"; ObjectID = "0wS-ZU-4Hx"; */
+"0wS-ZU-4Hx.configuration.title" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "0wS-ZU-4Hx"; */
+"0wS-ZU-4Hx.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "22L-bJ-fiT"; */
+"22L-bJ-fiT.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "22L-bJ-fiT"; */
+"22L-bJ-fiT.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "wind speed:"; ObjectID = "7fv-Hr-ecW"; */
+"7fv-Hr-ecW.text" = "wind speed:";
+
+/* Class = "UILabel"; text = "City Name"; ObjectID = "Dvk-uc-ikp"; */
+"Dvk-uc-ikp.text" = "City Name";
+
+/* Class = "UIButton"; configuration.title = "current"; ObjectID = "Ma5-3s-cxg"; */
+"Ma5-3s-cxg.configuration.title" = "current";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ma5-3s-cxg"; */
+"Ma5-3s-cxg.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "C"; ObjectID = "UtI-eR-qf6"; */
+"UtI-eR-qf6.text" = "C";
+
+/* Class = "UILabel"; text = "15"; ObjectID = "Xiy-2S-BWR"; */
+"Xiy-2S-BWR.text" = "15";
+
+/* Class = "UILabel"; text = "tempreature:"; ObjectID = "Z8q-BU-nSi"; */
+"Z8q-BU-nSi.text" = "tempreature:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ZIO-f7-bsO"; */
+"ZIO-f7-bsO.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Write city"; ObjectID = "ZmE-bz-iQd"; */
+"ZmE-bz-iQd.placeholder" = "Write city";
+
+/* Class = "UILabel"; text = "Max"; ObjectID = "a3h-sx-Jm3"; */
+"a3h-sx-Jm3.text" = "Max";
+
+/* Class = "UIButton"; configuration.title = "location"; ObjectID = "apt-y2-gVu"; */
+"apt-y2-gVu.configuration.title" = "location";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "apt-y2-gVu"; */
+"apt-y2-gVu.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Time"; ObjectID = "b6N-Sb-YxE"; */
+"b6N-Sb-YxE.text" = "Time";
+
+/* Class = "UISegmentedControl"; eDV-CW-kwx.segmentTitles[0] = "˚C"; ObjectID = "eDV-CW-kwx"; */
+"eDV-CW-kwx.segmentTitles[0]" = "˚C";
+
+/* Class = "UISegmentedControl"; eDV-CW-kwx.segmentTitles[1] = "˚F"; ObjectID = "eDV-CW-kwx"; */
+"eDV-CW-kwx.segmentTitles[1]" = "˚F";
+
+/* Class = "UILabel"; text = "C"; ObjectID = "hhO-nW-DQT"; */
+"hhO-nW-DQT.text" = "C";
+
+/* Class = "UIButton"; configuration.title = "Back"; ObjectID = "kfg-pe-6O8"; */
+"kfg-pe-6O8.configuration.title" = "Back";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kfg-pe-6O8"; */
+"kfg-pe-6O8.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Min"; ObjectID = "obg-nf-cyA"; */
+"obg-nf-cyA.text" = "Min";
+
+/* Class = "UILabel"; text = "Month"; ObjectID = "opF-Ws-cFM"; */
+"opF-Ws-cFM.text" = "Month";
+
+/* Class = "UISegmentedControl"; tMC-yv-7AA.segmentTitles[0] = "kph"; ObjectID = "tMC-yv-7AA"; */
+"tMC-yv-7AA.segmentTitles[0]" = "kph";
+
+/* Class = "UISegmentedControl"; tMC-yv-7AA.segmentTitles[1] = "mph"; ObjectID = "tMC-yv-7AA"; */
+"tMC-yv-7AA.segmentTitles[1]" = "mph";
+
+/* Class = "UILabel"; text = "temp"; ObjectID = "u3r-kA-fGe"; */
+"u3r-kA-fGe.text" = "temp";

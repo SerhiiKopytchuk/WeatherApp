@@ -11,6 +11,11 @@ import CoreLocation
 
 class ChangeCityViewController: UIViewController{
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var currentButton: UIButton!
+    @IBOutlet weak var writeCityTextField: UITextField!
+    
+    
     let locationManager = CLLocationManager()
     
     
@@ -24,8 +29,11 @@ class ChangeCityViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
     
+        
+        backButton.setTitle("back".localized(), for: .normal)
+        currentButton.setTitle("current".localized(), for: .normal)
+        writeCityTextField.attributedPlaceholder = NSAttributedString(string: "writeCity".localized())
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -119,7 +127,7 @@ extension ChangeCityViewController: CLLocationManagerDelegate{
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: location2D.latitude, longitude: location2D.longitude)
 
-        geoCoder.reverseGeocodeLocation(location, preferredLocale: Locale(identifier: Bundle.main.preferredLocalizations[0]), completionHandler: { (placemarks, _) -> Void in
+        geoCoder.reverseGeocodeLocation(location, preferredLocale: Locale(identifier: "en_us"), completionHandler: { (placemarks, _) -> Void in
             
             placemarks?.forEach { (placemark) in
                 if let city = placemark.locality {

@@ -366,11 +366,13 @@
                         <outlet property="cityName" destination="Dvk-uc-ikp" id="bSO-xz-htA"/>
                         <outlet property="countryLabel" destination="756-SA-Q2M" id="PEh-3e-Z6D"/>
                         <outlet property="dayCollectionView" destination="jyT-Kh-S1W" id="DOh-HI-527"/>
-                        <outlet property="feelsLikeLabel" destination="poI-Cd-ibV" id="o65-cC-q6E"/>
+                        <outlet property="feelsLikeLabel" destination="poI-Cd-ibV" id="rwi-b8-owU"/>
                         <outlet property="hourCollectionView" destination="1oD-LF-2Xp" id="anl-iv-7Ke"/>
+                        <outlet property="locationButton" destination="apt-y2-gVu" id="aDS-8n-tbg"/>
+                        <outlet property="settingsButton" destination="0wS-ZU-4Hx" id="S4L-bL-Djj"/>
                         <outlet property="temperatureLabel" destination="Nnp-1c-OS6" id="ggk-gW-6gY"/>
                         <outlet property="windDirectionLabel" destination="72s-C2-Qcr" id="WgX-Ba-2nO"/>
-                        <outlet property="windSpeedLabel" destination="uVR-ck-ewq" id="4Nn-bN-W7P"/>
+                        <outlet property="windSpeedLabel" destination="uVR-ck-ewq" id="4aj-3d-HQk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhX-Qg-mcb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -443,7 +445,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="22L-bJ-fiT" id="WIb-tB-J7V"/>
+                        <outlet property="temperatureLabel" destination="Z8q-BU-nSi" id="w7c-BW-rG2"/>
                         <outlet property="temperatureSegment" destination="eDV-CW-kwx" id="YgY-g3-0fh"/>
+                        <outlet property="windSpeedLabel" destination="7fv-Hr-ecW" id="fUj-Xc-AIk"/>
                         <outlet property="windSpeedSegment" destination="tMC-yv-7AA" id="NsY-Yd-khY"/>
                     </connections>
                 </viewController>
@@ -589,8 +594,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="kfg-pe-6O8" id="7rB-fW-FAB"/>
                         <outlet property="cityTableView" destination="cjT-SL-xcp" id="nwX-9e-dMl"/>
                         <outlet property="cityTextField" destination="ZmE-bz-iQd" id="MO7-wS-HRA"/>
+                        <outlet property="currentButton" destination="Ma5-3s-cxg" id="KR0-ou-tgW"/>
+                        <outlet property="writeCityTextField" destination="ZmE-bz-iQd" id="ztu-8Y-xn8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abM-ly-wi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
