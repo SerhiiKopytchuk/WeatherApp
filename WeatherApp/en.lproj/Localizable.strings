@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Serhii Kopytchuk on 30.03.2022.
+  
+*/
+
+"location" = "location";
+"settings" = "settings";
+"feelsLike" = "Feels like: ";
+"windSpeed" = "Wind speed: ";
+"windDirection" = "Wind directionЖ ";
+
+"back" = "back";
+"current" = "current";
+"writeCity" = "Write city";
+
+"temperature" = "Temperature: ";
+
+"max" = "max.";
+"min" = "min.";

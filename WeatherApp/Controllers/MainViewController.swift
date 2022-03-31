@@ -162,6 +162,9 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                         return
                     }
                     
+                    cell.maxLabel.text = "max".localized()
+                    cell.minLabel.text = "min".localized()
+                    
                     switch tempType{
                     case "C":
                         cell.minTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.minTempC ?? 0)

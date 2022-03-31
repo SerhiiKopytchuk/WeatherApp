@@ -148,7 +148,9 @@
                                                         <connections>
                                                             <outlet property="DayName" destination="opF-Ws-cFM" id="GmF-Hf-QNk"/>
                                                             <outlet property="dayLabel" destination="Xiy-2S-BWR" id="wBV-c5-QAA"/>
+                                                            <outlet property="maxLabel" destination="a3h-sx-Jm3" id="RcD-Zs-ofD"/>
                                                             <outlet property="maxTemperatureLabel" destination="UtI-eR-qf6" id="DcL-dv-t9w"/>
+                                                            <outlet property="minLabel" destination="obg-nf-cyA" id="cpE-f7-Gyq"/>
                                                             <outlet property="minTemperatureLabel" destination="hhO-nW-DQT" id="MTh-U8-IFW"/>
                                                             <outlet property="weatherImageView" destination="kAF-Q8-Kqh" id="EuL-vD-laM"/>
                                                         </connections>
