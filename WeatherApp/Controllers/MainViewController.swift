@@ -24,7 +24,7 @@ class MainViewController: UIViewController {
     
     
     let dayDetailedView = dayDetailView.instanceFromNib()
-
+    var allWeather = CurrentWeather()
     
     
     //create main object, that will give all info to all thingser
@@ -76,6 +76,9 @@ class MainViewController: UIViewController {
         
         Manager.shared.sendRequest { current in
             DispatchQueue.main.async {
+                
+                self.allWeather = current
+                
                 guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
                     return
                 }
@@ -144,6 +147,13 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             dayDetailedView.center.y = view.center.y
             dayDetailedView.frame.size.width = self.view.frame.width
             dayDetailedView.frame.size.height = view.frame.height/2
+            //try to configure
+
+            
+
+            
+            dayDetailedView.configure(weather: allWeather, index: indexPath.item)
+            
             dayDetailedView.rounded()
             dayDetailedView.delegate = self
             
@@ -160,7 +170,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.dayCollectionView{
-            return CGSize(width: self.dayCollectionView.frame.width/4, height: 200)
+            return CGSize(width: self.dayCollectionView.frame.width/3, height: 190)
         }else{
             return CGSize(width: hourCollectionView.frame.width/3, height: 126)
         }

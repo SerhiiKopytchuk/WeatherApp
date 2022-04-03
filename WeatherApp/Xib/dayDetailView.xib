@@ -51,20 +51,21 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjA-Cw-iSl">
-                    <rect key="frame" x="20" y="213" width="80" height="20"/>
+                    <rect key="frame" x="20" y="213" width="130" height="20"/>
                     <attributedString key="attributedText">
-                        <fragment content="Feels like: ">
+                        <fragment content="average visibility:">
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIr-V5-jgN">
-                    <rect key="frame" x="20" y="243" width="98" height="20"/>
+                    <rect key="frame" x="20" y="243" width="131" height="20"/>
                     <attributedString key="attributedText">
-                        <fragment content="Wind Speed:">
+                        <fragment content="Max wind speed:">
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -74,9 +75,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6X-0Q-aF1">
-                    <rect key="frame" x="20" y="273" width="115" height="20"/>
+                    <rect key="frame" x="20" y="273" width="121" height="20"/>
                     <attributedString key="attributedText">
-                        <fragment content="Wind direction:">
+                        <fragment content="Chance of rain: ">
                             <attributes>
                                 <font key="NSFont" size="17" name="HelveticaNeue"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -124,12 +125,12 @@
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="WindDirectionLabel" destination="N6X-0Q-aF1" id="h5B-O9-jLe"/>
-                <outlet property="WindSpeedLabel" destination="nIr-V5-jgN" id="dTM-hW-7gY"/>
+                <outlet property="MaxWindSpeedLabel" destination="nIr-V5-jgN" id="dTM-hW-7gY"/>
+                <outlet property="averageVisibility" destination="HjA-Cw-iSl" id="cXX-PB-TdJ"/>
+                <outlet property="chanceOfRainLabel" destination="N6X-0Q-aF1" id="h5B-O9-jLe"/>
                 <outlet property="cityNameLabel" destination="1Hl-lJ-VOg" id="7Yv-vc-kF5"/>
                 <outlet property="closeButton" destination="bEf-MB-G3W" id="WeA-LW-REw"/>
                 <outlet property="dateLabel" destination="dPr-60-Vj9" id="gFX-QN-NT0"/>
-                <outlet property="feelsLikeLabel" destination="HjA-Cw-iSl" id="cXX-PB-TdJ"/>
                 <outlet property="imageView" destination="pvN-fh-otY" id="8Nk-7L-dF1"/>
                 <outlet property="locationLabel" destination="cSB-HM-Mtn" id="h8s-ts-ZdE"/>
                 <outlet property="temperatureLabel" destination="zyz-p3-bS7" id="M5e-u9-eWb"/>
