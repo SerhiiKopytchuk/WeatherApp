@@ -128,6 +128,8 @@ class MainViewController: UIViewController {
                 
                 self.dismiss(animated: true)
                 
+
+                
                 print()
             }
         }
@@ -139,38 +141,13 @@ class MainViewController: UIViewController {
 extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if collectionView == self.dayCollectionView{
-            
-            blurView.isHidden = false
-            
-            dayDetailedView.frame.origin.x = 0
-            dayDetailedView.center.y = view.center.y
-            dayDetailedView.frame.size.width = self.view.frame.width
-            dayDetailedView.frame.size.height = view.frame.height/2
-            //try to configure
 
-            
-
-            
-            dayDetailedView.configure(weather: allWeather, index: indexPath.item)
-            
-            dayDetailedView.rounded()
-            dayDetailedView.delegate = self
-            
-            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-                self.view.addSubview(self.dayDetailedView)
-            }, completion: nil)
-            
-            
-        }else{
-            
-        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.dayCollectionView{
-            return CGSize(width: self.dayCollectionView.frame.width/3, height: 190)
+            return CGSize(width: self.dayCollectionView.frame.width/3, height: 200)
         }else{
             return CGSize(width: hourCollectionView.frame.width/3, height: 126)
         }
@@ -192,6 +169,38 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             return count
         }
         
+    }
+    
+
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+            if collectionView == self.dayCollectionView{
+
+                blurView.isHidden = false
+
+                dayDetailedView.frame.origin.x = 0
+                dayDetailedView.center.y = view.center.y
+                dayDetailedView.frame.size.width = self.view.frame.width
+                dayDetailedView.frame.size.height = view.frame.height/2
+                //try to configure
+
+
+
+
+                dayDetailedView.configure(weather: allWeather, index: indexPath.item)
+
+                dayDetailedView.rounded()
+                dayDetailedView.delegate = self
+
+                UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    self.view.addSubview(self.dayDetailedView)
+                }, completion: nil)
+                dayCollectionView.deselectItem(at: indexPath, animated: true)
+                dayCollectionView.reloadData()
+            }else{
+                print("elsework")
+            }
+            return true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -302,7 +311,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 5
     }
     
 }
