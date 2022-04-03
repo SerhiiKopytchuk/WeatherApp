@@ -336,20 +336,45 @@
                                             <constraint firstAttribute="height" constant="884" id="fIF-MH-KuG"/>
                                         </constraints>
                                     </view>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMB-K5-cVm">
+                                        <rect key="frame" x="0.0" y="-100" width="414" height="1795"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1jM-70-gFX">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1795"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="817-t7-VNO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="174" height="1667"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gSf-bN-Rsy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="174" height="1667"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    </view>
+                                                    <vibrancyEffect>
+                                                        <blurEffect style="regular"/>
+                                                    </vibrancyEffect>
+                                                </visualEffectView>
+                                            </subviews>
+                                        </view>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="FSB-J7-g4K" secondAttribute="bottom" constant="42" id="39h-y1-MVi"/>
                                     <constraint firstItem="KLo-u4-g6R" firstAttribute="leading" secondItem="Dl6-Mh-mGo" secondAttribute="leading" id="CyW-QF-7zZ"/>
                                     <constraint firstItem="lbd-Va-Ime" firstAttribute="width" secondItem="Dl6-Mh-mGo" secondAttribute="width" id="FQW-Xr-Bue"/>
+                                    <constraint firstItem="dMB-K5-cVm" firstAttribute="top" secondItem="Dl6-Mh-mGo" secondAttribute="top" constant="-100" id="FgP-Vt-jfs"/>
                                     <constraint firstItem="lbd-Va-Ime" firstAttribute="top" secondItem="Dl6-Mh-mGo" secondAttribute="top" id="QUu-hq-cNs"/>
+                                    <constraint firstAttribute="trailing" secondItem="dMB-K5-cVm" secondAttribute="trailing" id="Z9f-TI-fhI"/>
                                     <constraint firstItem="lbd-Va-Ime" firstAttribute="leading" secondItem="Dl6-Mh-mGo" secondAttribute="leading" id="aMN-57-BIQ"/>
                                     <constraint firstItem="KLo-u4-g6R" firstAttribute="top" secondItem="lbd-Va-Ime" secondAttribute="bottom" id="bfU-8x-Y8s"/>
+                                    <constraint firstItem="dMB-K5-cVm" firstAttribute="leading" secondItem="Dl6-Mh-mGo" secondAttribute="leading" id="bjL-EK-xXX"/>
                                     <constraint firstAttribute="trailing" secondItem="KLo-u4-g6R" secondAttribute="trailing" id="eyV-BI-Dox"/>
                                     <constraint firstItem="FSB-J7-g4K" firstAttribute="top" secondItem="KLo-u4-g6R" secondAttribute="bottom" id="mlE-yx-8f2"/>
                                     <constraint firstItem="KLo-u4-g6R" firstAttribute="width" secondItem="Dl6-Mh-mGo" secondAttribute="width" id="pbf-NI-OOT"/>
                                     <constraint firstAttribute="trailing" secondItem="lbd-Va-Ime" secondAttribute="trailing" id="qQ5-X4-40z"/>
                                     <constraint firstAttribute="trailing" secondItem="FSB-J7-g4K" secondAttribute="trailing" id="rAs-rM-OaJ"/>
                                     <constraint firstItem="FSB-J7-g4K" firstAttribute="leading" secondItem="Dl6-Mh-mGo" secondAttribute="leading" id="tTC-od-NAS"/>
+                                    <constraint firstAttribute="bottom" secondItem="dMB-K5-cVm" secondAttribute="bottom" id="yCY-IH-jza"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -365,6 +390,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="d3q-6r-NhY"/>
                     <connections>
+                        <outlet property="blurView" destination="dMB-K5-cVm" id="Qn6-xa-gql"/>
                         <outlet property="cityName" destination="Dvk-uc-ikp" id="bSO-xz-htA"/>
                         <outlet property="countryLabel" destination="756-SA-Q2M" id="PEh-3e-Z6D"/>
                         <outlet property="dayCollectionView" destination="jyT-Kh-S1W" id="DOh-HI-527"/>

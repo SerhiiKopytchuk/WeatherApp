@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol dayDetailViewDelegate:AnyObject{
+    func vcWasClosed()
+}
+
 class dayDetailView: UIView {
 
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -19,12 +23,12 @@ class dayDetailView: UIView {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     
-    
+    weak var delegate:dayDetailViewDelegate?
  
 
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        
+        delegate?.vcWasClosed()
     }
     
     func configure(temperature:String, city:String, location:String, feelsLike:String, windSpeed:String, windDirection:String, dateStr:String, image:UIImage){

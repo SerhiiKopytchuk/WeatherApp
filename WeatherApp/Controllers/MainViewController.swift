@@ -20,9 +20,14 @@ class MainViewController: UIViewController {
     @IBOutlet weak var windDirectionLabel: UILabel!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var blurView: UIVisualEffectView!
     
     
-    //create main object, that will give all info to all things
+    let dayDetailedView = dayDetailView.instanceFromNib()
+
+    
+    
+    //create main object, that will give all info to all thingser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +52,9 @@ class MainViewController: UIViewController {
     }
     
     @objc func starSetup(){
+        
+        blurView.isHidden = true
+
         
         locationButton.setTitle("location".localized(), for: .normal)
         settingsButton.setTitle("settings".localized(), for: .normal)
@@ -130,19 +138,20 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == self.dayCollectionView{
             
-            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            view.addSubview(blurEffectView)
+            blurView.isHidden = false
             
-            let dayDetailView = dayDetailView.instanceFromNib()
-            dayDetailView.frame.origin.x = 0
-            dayDetailView.center.y = view.center.y
-            dayDetailView.frame.size.width = self.view.frame.width
-            dayDetailView.frame.size.height = view.frame.height/2
-            dayDetailView.rounded()
-            view.addSubview(dayDetailView)
+            dayDetailedView.frame.origin.x = 0
+            dayDetailedView.center.y = view.center.y
+            dayDetailedView.frame.size.width = self.view.frame.width
+            dayDetailedView.frame.size.height = view.frame.height/2
+            dayDetailedView.rounded()
+            dayDetailedView.delegate = self
+            
+            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                self.view.addSubview(self.dayDetailedView)
+            }, completion: nil)
+            
+            
         }else{
             
         }
@@ -286,6 +295,15 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         return 1
     }
     
+}
+
+extension MainViewController:dayDetailViewDelegate{
+    func vcWasClosed() {
+        blurView.isHidden = true
+        UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+            self.dayDetailedView.removeFromSuperview()
+        }, completion: nil)
+    }
 }
 
 
