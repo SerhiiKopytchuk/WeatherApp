@@ -17,9 +17,14 @@
 "writeCity" = "Write city";
 
 "temperature" = "Temperature: ";
+"distance" = "distance: ";
+
 
 "max" = "max.";
 "min" = "min.";
+
+"miles" = " miles";
+"km" = " km";
 
 "averageVisibility" = "average visibility: ";
 "maxWindSpeed" = "max wind speed: ";

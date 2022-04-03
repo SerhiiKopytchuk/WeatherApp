@@ -11,10 +11,12 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var temperatureSegment: UISegmentedControl!
     @IBOutlet weak var windSpeedSegment: UISegmentedControl!
-    
+    @IBOutlet weak var distanceSegment: UISegmentedControl!
+
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -23,11 +25,24 @@ class SettingsViewController: UIViewController {
         temperatureLabel.text = "temperature".localized()
         windSpeedLabel.text = "windSpeed".localized()
         backButton.setTitle("back".localized(), for: .normal)
+        distanceLabel.text = "distance".localized()
         
         startSettings()
     }
     
     func startSettings(){
+        guard let distanceType = UserDefaults.standard.value(forKey: "distanceType") as? String else{
+            return
+        }
+        switch distanceType{
+        case "km":
+            distanceSegment.selectedSegmentIndex = 0
+        case "miles":
+            distanceSegment.selectedSegmentIndex = 1
+        default:
+            distanceSegment.selectedSegmentIndex = 0
+        }
+        
         guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
             return
         }
@@ -37,7 +52,7 @@ class SettingsViewController: UIViewController {
         case "F":
             temperatureSegment.selectedSegmentIndex = 1
         default:
-            break
+            temperatureSegment.selectedSegmentIndex = 0
         }
         
         guard let WindSpeedType = UserDefaults.standard.value(forKey: "windSpeedType") as? String else{
@@ -49,7 +64,7 @@ class SettingsViewController: UIViewController {
         case "mph":
             windSpeedSegment.selectedSegmentIndex = 1
         default:
-            break
+            windSpeedSegment.selectedSegmentIndex = 0
         }
     }
     
@@ -65,7 +80,7 @@ class SettingsViewController: UIViewController {
         case 1:
             UserDefaults.standard.set("F", forKey: "temperatureType")
         default:
-            break
+            UserDefaults.standard.set("C", forKey: "temperatureType")
         }
     }
     
@@ -76,9 +91,19 @@ class SettingsViewController: UIViewController {
         case 1:
             UserDefaults.standard.set("mph", forKey: "windSpeedType")
         default:
-            break
+            UserDefaults.standard.set("kph", forKey: "windSpeedType")
         }
     }
     
+    @IBAction func distanceWalueChanged(_ sender: UISegmentedControl) {
+        switch distanceSegment.selectedSegmentIndex{
+        case 0:
+            UserDefaults.standard.set("km", forKey: "distanceType")
+        case 1:
+            UserDefaults.standard.set("miles", forKey: "distanceType")
+        default:
+            UserDefaults.standard.set("km", forKey: "distanceType")
+        }
+    }
     
 }

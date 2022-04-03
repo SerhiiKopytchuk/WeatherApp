@@ -458,6 +458,22 @@
                                     <action selector="windSpeedValueChnaged:" destination="Lct-i3-RlI" eventType="valueChanged" id="6sC-gO-Xj2"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="distance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yok-Y1-Tea">
+                                <rect key="frame" x="20" y="207" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="72Q-Aj-soa">
+                                <rect key="frame" x="271" y="202" width="103" height="32"/>
+                                <segments>
+                                    <segment title="km"/>
+                                    <segment title="miles"/>
+                                </segments>
+                                <connections>
+                                    <action selector="distanceWalueChanged:" destination="Lct-i3-RlI" eventType="valueChanged" id="hFT-iN-EIz"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vTM-JI-kHi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -465,9 +481,13 @@
                             <constraint firstItem="tMC-yv-7AA" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" id="1KL-kx-CVZ"/>
                             <constraint firstItem="Z8q-BU-nSi" firstAttribute="leading" secondItem="vTM-JI-kHi" secondAttribute="leading" constant="20" id="3rJ-GG-r4v"/>
                             <constraint firstItem="22L-bJ-fiT" firstAttribute="leading" secondItem="vTM-JI-kHi" secondAttribute="leading" constant="20" id="82A-QS-DW6"/>
+                            <constraint firstItem="yok-Y1-Tea" firstAttribute="top" secondItem="7fv-Hr-ecW" secondAttribute="bottom" constant="30" id="DpI-Eq-XIz"/>
+                            <constraint firstItem="yok-Y1-Tea" firstAttribute="leading" secondItem="7fv-Hr-ecW" secondAttribute="leading" id="FD1-xG-lDN"/>
                             <constraint firstItem="Z8q-BU-nSi" firstAttribute="top" secondItem="22L-bJ-fiT" secondAttribute="bottom" constant="30" id="HQC-Db-tMv"/>
+                            <constraint firstItem="72Q-Aj-soa" firstAttribute="centerY" secondItem="yok-Y1-Tea" secondAttribute="centerY" id="JSI-5E-N8s"/>
                             <constraint firstItem="tMC-yv-7AA" firstAttribute="centerY" secondItem="7fv-Hr-ecW" secondAttribute="centerY" id="VHd-fT-EVS"/>
                             <constraint firstItem="vTM-JI-kHi" firstAttribute="trailing" secondItem="eDV-CW-kwx" secondAttribute="trailing" constant="40" id="as3-0u-Nsd"/>
+                            <constraint firstItem="72Q-Aj-soa" firstAttribute="trailing" secondItem="tMC-yv-7AA" secondAttribute="trailing" id="fOs-Yx-UqW"/>
                             <constraint firstItem="7fv-Hr-ecW" firstAttribute="top" secondItem="Z8q-BU-nSi" secondAttribute="bottom" constant="30" id="mLa-Tk-7gD"/>
                             <constraint firstItem="eDV-CW-kwx" firstAttribute="centerY" secondItem="Z8q-BU-nSi" secondAttribute="centerY" id="pBT-Dm-Hkg"/>
                             <constraint firstItem="7fv-Hr-ecW" firstAttribute="leading" secondItem="Z8q-BU-nSi" secondAttribute="leading" id="tss-HT-L7N"/>
@@ -476,6 +496,8 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="22L-bJ-fiT" id="WIb-tB-J7V"/>
+                        <outlet property="distanceLabel" destination="yok-Y1-Tea" id="Msr-o5-aT6"/>
+                        <outlet property="distanceSegment" destination="72Q-Aj-soa" id="o4W-ss-6P1"/>
                         <outlet property="temperatureLabel" destination="Z8q-BU-nSi" id="w7c-BW-rG2"/>
                         <outlet property="temperatureSegment" destination="eDV-CW-kwx" id="YgY-g3-0fh"/>
                         <outlet property="windSpeedLabel" destination="7fv-Hr-ecW" id="fUj-Xc-AIk"/>

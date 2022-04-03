@@ -12,7 +12,7 @@ protocol dayDetailViewDelegate:AnyObject{
 }
 
 class dayDetailView: UIView {
-
+    
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -24,8 +24,8 @@ class dayDetailView: UIView {
     @IBOutlet weak var imageView: UIImageView!
     
     weak var delegate:dayDetailViewDelegate?
- 
-
+    
+    
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         delegate?.vcWasClosed()
@@ -38,13 +38,30 @@ class dayDetailView: UIView {
         var maxWindSpeed = "maxWindSpeed".localized()
         var ChanceOfRain = "chanceOfRain".localized()
         
+        guard let distanceType = UserDefaults.standard.value(forKey: "distanceType") as? String else{ return }
+        
+        switch distanceType{
+        case "km":
+            avgVis += String(weather.forecast?.forecastDay?[index].day?.averageVisibilityKm ?? 0.0)
+            avgVis += "km".localized()
+            self.averageVisibility.text = avgVis
+        case "miles":
+            avgVis += String(weather.forecast?.forecastDay?[index].day?.averageVisibilityMiles ?? 0.0)
+            avgVis += "miles".localized()
+            self.averageVisibility.text = avgVis
+        default:
+            avgVis += String(weather.forecast?.forecastDay?[index].day?.averageVisibilityKm ?? 0.0)
+            avgVis += "km"
+            self.averageVisibility.text = avgVis
+        }
+        
         
         cityNameLabel.text = weather.locationWeather?.name
         locationLabel.text = weather.locationWeather?.country
         
-        avgVis += String(weather.forecast?.forecastDay?[index].day?.averageVisibilityKm ?? 0.0)
-        self.averageVisibility.text = avgVis
-       
+        
+        
+        
         ChanceOfRain += String(weather.forecast?.forecastDay?[index].day?.chanceOfRain ?? 0.0)
         if ChanceOfRain ==  "chanceOfRain".localized() + "0.0"{
             ChanceOfRain = "chanceOfRain".localized() + "noInfo".localized()
@@ -79,15 +96,15 @@ class dayDetailView: UIView {
         switch windType{
         case "kph":
             maxWindSpeed += String(weather.forecast?.forecastDay?[index].day?.maxWindKph ?? 0.0)
-            maxWindSpeed += "kph"
+            maxWindSpeed += " kph"
             MaxWindSpeedLabel.text = maxWindSpeed
         case "mph":
             maxWindSpeed += String(weather.forecast?.forecastDay?[index].day?.maxWindMph ?? 0.0)
-            maxWindSpeed += "mph"
+            maxWindSpeed += " mph"
             MaxWindSpeedLabel.text = maxWindSpeed
         default:
             maxWindSpeed += String(weather.forecast?.forecastDay?[index].day?.maxWindKph ?? 0.0)
-            maxWindSpeed += "kph"
+            maxWindSpeed += " kph"
             MaxWindSpeedLabel.text = maxWindSpeed
         }
         
