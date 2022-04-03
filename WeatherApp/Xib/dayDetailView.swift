@@ -33,13 +33,26 @@ class dayDetailView: UIView {
     
     func configure(weather:CurrentWeather, index:Int){
         
-        temperatureLabel.text = String(weather.forecast?.forecastDay?[index].day?.averageTemperatureC ?? 0.0)
+        var temperature = ""
+        var avgVis = "averageVisibility".localized()
+        var maxWindSpeed = "maxWindSpeed".localized()
+        var ChanceOfRain = "chanceOfRain".localized()
+        
+        
         cityNameLabel.text = weather.locationWeather?.name
         locationLabel.text = weather.locationWeather?.country
-        self.averageVisibility.text = String(weather.forecast?.forecastDay?[index].day?.averageVisibilityKm ?? 0.0)
-        self.MaxWindSpeedLabel.text = String(weather.forecast?.forecastDay?[index].day?.maxWindKph ?? 0.0)
-        self.chanceOfRainLabel.text = String(weather.forecast?.forecastDay?[index].day?.chanceOfRain ?? 0.0)
-        print(index)
+        
+        avgVis += String(weather.forecast?.forecastDay?[index].day?.averageVisibilityKm ?? 0.0)
+        self.averageVisibility.text = avgVis
+       
+        ChanceOfRain += String(weather.forecast?.forecastDay?[index].day?.chanceOfRain ?? 0.0)
+        if ChanceOfRain ==  "chanceOfRain".localized() + "0.0"{
+            ChanceOfRain = "chanceOfRain".localized() + "noInfo".localized()
+        }else{
+            ChanceOfRain += "%"
+        }
+        self.chanceOfRainLabel.text = ChanceOfRain
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let date = formatter.date(from: weather.forecast?.forecastDay?[index].date ?? "") ?? nil
@@ -47,7 +60,13 @@ class dayDetailView: UIView {
         let dateFinished = formatter.string(from: date ?? Date.now)
         dateLabel.text = dateFinished
         
-        imageView.image = UIImage(named: weather.forecast?.forecastDay?[index].day?.condition?.icon ?? "")
+        
+        
+        var iconPath = weather.forecast?.forecastDay?[index].day?.condition?.icon
+        iconPath?.removeLast(4)
+        iconPath?.removeFirst(35)
+        let iconName = iconPath?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
+        imageView.image = UIImage(named: iconName ?? "")
         
         guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
             return
@@ -57,24 +76,34 @@ class dayDetailView: UIView {
             return
         }
         
+        switch windType{
+        case "kph":
+            maxWindSpeed += String(weather.forecast?.forecastDay?[index].day?.maxWindKph ?? 0.0)
+            maxWindSpeed += "kph"
+            MaxWindSpeedLabel.text = maxWindSpeed
+        case "mph":
+            maxWindSpeed += String(weather.forecast?.forecastDay?[index].day?.maxWindMph ?? 0.0)
+            maxWindSpeed += "mph"
+            MaxWindSpeedLabel.text = maxWindSpeed
+        default:
+            maxWindSpeed += String(weather.forecast?.forecastDay?[index].day?.maxWindKph ?? 0.0)
+            maxWindSpeed += "kph"
+            MaxWindSpeedLabel.text = maxWindSpeed
+        }
+        
         switch tempType{
         case "C":
-            switch windType{
-            case "kph":
-                break
-            case "mph":
-                break
-            default: break
-            }
+            temperature = String(weather.forecast?.forecastDay?[index].day?.averageTemperatureC ?? 0.0)
+            temperature += "˚C"
+            temperatureLabel.text = temperature
         case "F":
-            switch windType{
-            case "kph":
-                break
-            case "mph":
-                break
-                default: break
-            }
-        default: break
+            temperature = String(weather.forecast?.forecastDay?[index].day?.averageTemperatureF ?? 0.0)
+            temperature += "˚C"
+            temperatureLabel.text = temperature
+        default:
+            temperature = String(weather.forecast?.forecastDay?[index].day?.averageTemperatureC ?? 0.0)
+            temperature += "˚C"
+            temperatureLabel.text = temperature
         }
         
     }
