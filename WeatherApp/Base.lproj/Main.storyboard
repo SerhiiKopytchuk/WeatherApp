@@ -51,7 +51,7 @@
                                                 </connections>
                                             </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jyT-Kh-S1W">
-                                                <rect key="frame" x="10" y="69" width="394" height="200"/>
+                                                <rect key="frame" x="0.0" y="69" width="414" height="200"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="YSN-Ud-jXL"/>
@@ -171,8 +171,8 @@
                                             <constraint firstAttribute="trailing" secondItem="0wS-ZU-4Hx" secondAttribute="trailing" constant="20" id="73n-YV-5wT"/>
                                             <constraint firstItem="jyT-Kh-S1W" firstAttribute="top" secondItem="0wS-ZU-4Hx" secondAttribute="bottom" constant="30" id="8fj-uX-RqK"/>
                                             <constraint firstItem="apt-y2-gVu" firstAttribute="top" secondItem="0wS-ZU-4Hx" secondAttribute="top" id="9kD-de-Po7"/>
-                                            <constraint firstAttribute="trailing" secondItem="jyT-Kh-S1W" secondAttribute="trailing" constant="10" id="Adf-Hg-Kun"/>
-                                            <constraint firstItem="jyT-Kh-S1W" firstAttribute="leading" secondItem="lbd-Va-Ime" secondAttribute="leading" constant="10" id="M7m-BF-EcP"/>
+                                            <constraint firstAttribute="trailing" secondItem="jyT-Kh-S1W" secondAttribute="trailing" id="Adf-Hg-Kun"/>
+                                            <constraint firstItem="jyT-Kh-S1W" firstAttribute="leading" secondItem="lbd-Va-Ime" secondAttribute="leading" id="M7m-BF-EcP"/>
                                             <constraint firstItem="apt-y2-gVu" firstAttribute="leading" secondItem="lbd-Va-Ime" secondAttribute="leading" constant="20" id="PvI-sW-ic9"/>
                                             <constraint firstItem="apt-y2-gVu" firstAttribute="bottom" secondItem="0wS-ZU-4Hx" secondAttribute="bottom" id="SUf-Qy-yQA"/>
                                             <constraint firstAttribute="bottom" secondItem="jyT-Kh-S1W" secondAttribute="bottom" id="X9N-Of-iEz"/>

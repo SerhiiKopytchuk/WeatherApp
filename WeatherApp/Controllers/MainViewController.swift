@@ -127,6 +127,28 @@ class MainViewController: UIViewController {
 
 extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if collectionView == self.dayCollectionView{
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.addSubview(blurEffectView)
+            
+            let dayDetailView = dayDetailView.instanceFromNib()
+            dayDetailView.frame.origin.x = 0
+            dayDetailView.center.y = view.center.y
+            dayDetailView.frame.size.width = self.view.frame.width
+            dayDetailView.frame.size.height = view.frame.height/2
+            dayDetailView.rounded()
+            view.addSubview(dayDetailView)
+        }else{
+            
+        }
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.dayCollectionView{
             return CGSize(width: self.dayCollectionView.frame.width/4, height: 200)

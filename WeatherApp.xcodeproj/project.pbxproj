@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4017952727F9848B00776C27 /* dayDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4017952627F9848B00776C27 /* dayDetailView.xib */; };
+		4017952927F984E200776C27 /* dayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4017952827F984E200776C27 /* dayDetailView.swift */; };
+		4017952B27F990A400776C27 /* UiView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4017952A27F990A400776C27 /* UiView+extension.swift */; };
 		4018715A27E9D7AB00579F7A /* HoursCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4018715927E9D7AB00579F7A /* HoursCollectionViewCell.swift */; };
 		404284AE27EA13DD002A304A /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404284AD27EA13DD002A304A /* ChangeCityViewController.swift */; };
 		404284B027EA1618002A304A /* cityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404284AF27EA1618002A304A /* cityTableViewCell.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4017952627F9848B00776C27 /* dayDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = dayDetailView.xib; sourceTree = "<group>"; };
+		4017952827F984E200776C27 /* dayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dayDetailView.swift; sourceTree = "<group>"; };
+		4017952A27F990A400776C27 /* UiView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UiView+extension.swift"; sourceTree = "<group>"; };
 		4018715927E9D7AB00579F7A /* HoursCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursCollectionViewCell.swift; sourceTree = "<group>"; };
 		404284AD27EA13DD002A304A /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		404284AF27EA1618002A304A /* cityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityTableViewCell.swift; sourceTree = "<group>"; };
@@ -62,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4017952527F9846100776C27 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				4017952627F9848B00776C27 /* dayDetailView.xib */,
+				4017952827F984E200776C27 /* dayDetailView.swift */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
 		405E10B827E5F3B000F3EAC2 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +96,7 @@
 		405E10C327E5F3B000F3EAC2 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4017952527F9846100776C27 /* Xib */,
 				4085C4C327F45E260056E0C2 /* extension */,
 				405E10DE27E6036A00F3EAC2 /* Cells */,
 				405E10DB27E6014A00F3EAC2 /* Models */,
@@ -131,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				4085C4C427F45E320056E0C2 /* String+extension.swift */,
+				4017952A27F990A400776C27 /* UiView+extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -194,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4017952727F9848B00776C27 /* dayDetailView.xib in Resources */,
 				405E10D127E5F3B100F3EAC2 /* LaunchScreen.storyboard in Resources */,
 				4085C4BF27F45DBB0056E0C2 /* Localizable.strings in Resources */,
 				405E10CE27E5F3B100F3EAC2 /* Assets.xcassets in Resources */,
@@ -213,7 +231,9 @@
 				404284B027EA1618002A304A /* cityTableViewCell.swift in Sources */,
 				405E10C527E5F3B000F3EAC2 /* AppDelegate.swift in Sources */,
 				405E10E827E63E7500F3EAC2 /* CurrentWeather.swift in Sources */,
+				4017952B27F990A400776C27 /* UiView+extension.swift in Sources */,
 				404284AE27EA13DD002A304A /* ChangeCityViewController.swift in Sources */,
+				4017952927F984E200776C27 /* dayDetailView.swift in Sources */,
 				4018715A27E9D7AB00579F7A /* HoursCollectionViewCell.swift in Sources */,
 				405E10C727E5F3B000F3EAC2 /* SceneDelegate.swift in Sources */,
 				405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */,
