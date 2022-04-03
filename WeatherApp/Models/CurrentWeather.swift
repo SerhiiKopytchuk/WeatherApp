@@ -39,6 +39,17 @@ class DayInfo{
     var minTempC:Double? = 0.0
     var maxTempF:Double? = 0.0
     var minTempF:Double? = 0.0
+    
+    var averageTemperatureC:Double? = 0.0
+    var averageTemperatureF:Double? = 0.0
+    var averageVisibilityKm:Double? = 0.0
+    var averageVisibilityMiles:Double? = 0.0
+    var chanceOfRain:Double? = 0.0
+    var maxWindKph:Double? = 0.0
+    var maxWindMph:Double? = 0.0
+    
+
+
     var condition:Condition? = nil
 }
 

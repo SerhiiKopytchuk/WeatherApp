@@ -10,7 +10,7 @@
 "settings" = "settings";
 "feelsLike" = "Feels like: ";
 "windSpeed" = "Wind speed: ";
-"windDirection" = "Wind directionЖ ";
+"windDirection" = "Wind direction: ";
 
 "back" = "back";
 "current" = "current";
@@ -20,3 +20,8 @@
 
 "max" = "max.";
 "min" = "min.";
+
+"averageVisibility" = "average visibility: ";
+"maxWindSpeed" = "max wind speed: ";
+"chanceOfRain" = "chance of rain: ";
+"noInfo" = "no info";

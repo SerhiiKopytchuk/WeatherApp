@@ -124,6 +124,36 @@ class Manager{
                                 dayInf.minTempF = minTempF
                             }
                             
+                            //work there with my new info
+                            
+                            if let averageTemperatureC = day["avgtemp_c"] as? Double{
+                                dayInf.averageTemperatureC = averageTemperatureC
+                            }
+                            
+                            if let averageTemperatureF = day["avgtemp_f"] as? Double{
+                                dayInf.averageTemperatureF = averageTemperatureF
+                            }
+                            
+                            if let averageVisibilityKm = day["avgvis_km"] as? Double{
+                                dayInf.averageVisibilityKm = averageVisibilityKm
+                            }
+                            
+                            if let averageVisibilityMiles = day["avgvis_miles"] as? Double{
+                                dayInf.averageVisibilityMiles = averageVisibilityMiles
+                            }
+                            
+                            if let chanceOfRain = day["daily_chance_of_rain"] as? Double{
+                                dayInf.chanceOfRain = chanceOfRain
+                            }
+                            
+                            if let maxWindKph = day["maxwind_kph"] as? Double{
+                                dayInf.maxWindKph = maxWindKph
+                            }
+                               
+                            if let maxWindMph = day["maxwind_mph"] as? Double{
+                                dayInf.maxWindMph = maxWindMph
+                            }
+                            
                             _forecast.day = dayInf
                             
                             let _cond = Condition()
