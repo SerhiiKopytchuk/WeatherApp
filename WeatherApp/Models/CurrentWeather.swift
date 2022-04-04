@@ -52,8 +52,6 @@ class DayInfo{
     var maxWindKph:Double? = 0.0
     var maxWindMph:Double? = 0.0
     
-
-
     var condition:Condition? = nil
 }
 
