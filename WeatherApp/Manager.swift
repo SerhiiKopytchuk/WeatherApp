@@ -225,8 +225,12 @@ class Manager{
                                     hourInf.windMph = windMph
                                 }
                                 
-                                if let feelsLike = hour["feelslike_c"] as? Double{
-                                    hourInf.feelsLike = feelsLike
+                                if let feelsLikeC = hour["feelslike_c"] as? Double{
+                                    hourInf.feelsLikeC = feelsLikeC
+                                }
+                                
+                                if let feelsLikeF = hour["feelslike_f"] as? Double{
+                                    hourInf.feelsLikeF = feelsLikeF
                                 }
                                 
                                 hourInfArr.append(hourInf)

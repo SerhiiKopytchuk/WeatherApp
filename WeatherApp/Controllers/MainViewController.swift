@@ -222,7 +222,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                 let currentHour = formatter.string(from: date)
                 count = 24 - (Int(currentHour) ?? 0)
                 
-                hourDetailedView.configure(weather: allWeather, index: indexPath.item)
+                hourDetailedView.configure(weather: allWeather, index: indexPath.item + 24 - count)
                 
                 UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
                     self.view.addSubview(self.hourDetailedView)
@@ -288,7 +288,6 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             return cell
         }else{
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HoursCollectionViewCell", for: indexPath) as? HoursCollectionViewCell else {return UICollectionViewCell()}
-            //
             var count = 0
             let date = Date.now
             let formatter = DateFormatter()
