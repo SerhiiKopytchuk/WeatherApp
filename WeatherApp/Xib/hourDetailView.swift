@@ -110,6 +110,8 @@ class hourDetailView: UIView {
         let time = formatter.string(from: date ?? Date())
         timeLabel.text = time
         
+        imageView.image = UIImage(named: weather.forecast?.forecastDay?[0].hour?[index].condition?.icon ?? "")
+        
     }
     
     @IBAction func clouseButtonPressed(_ sender: UIButton) {

@@ -79,11 +79,7 @@ class dayDetailView: UIView {
         
         
         
-        var iconPath = weather.forecast?.forecastDay?[index].day?.condition?.icon
-        iconPath?.removeLast(4)
-        iconPath?.removeFirst(35)
-        let iconName = iconPath?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-        imageView.image = UIImage(named: iconName ?? "")
+        imageView.image = UIImage(named: weather.forecast?.forecastDay?[index].day?.condition?.icon ?? "")
         
         guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
             return

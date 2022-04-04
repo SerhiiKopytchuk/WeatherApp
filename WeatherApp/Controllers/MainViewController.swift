@@ -260,11 +260,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     
                    
                     
-                    var iconStr = current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon
-                    iconStr?.removeLast(4)
-                    iconStr?.removeFirst(35)
-                    let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-                    cell.weatherImageView.image = UIImage(named: iconName ?? "Sunny")
+                    cell.weatherImageView.image = UIImage(named: current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[indexPath.item].date
                     
@@ -316,11 +312,8 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                         temp += "˚C"
                         cell.temperatureLabel.text = temp
                     }
-                    var iconStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon
-                    iconStr?.removeLast(4)
-                    iconStr?.removeFirst(35)
-                    let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-                    cell.imageView.image = UIImage(named: iconName ?? "Sunny")
+                    
+                    cell.imageView.image = UIImage(named: current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count ].time
                     let formatter = DateFormatter()

@@ -166,8 +166,10 @@ class Manager{
                                 _cond.text = condText
                             }
                             
-                            if let condIcon = condition["icon"] as? String {
-                                _cond.icon = condIcon
+                            if var condIcon = condition["icon"] as? String {
+                                condIcon.removeLast(4)
+                                condIcon.removeFirst(35)
+                                _cond.icon = condIcon.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
                             }
                             dayInf.condition = _cond
                             _forecast.day = dayInf
@@ -208,8 +210,10 @@ class Manager{
                                     return
                                 }
                                 
-                                if let icon = _condition["icon"] as? String{
-                                    condition.icon = icon
+                                if var icon = _condition["icon"] as? String{
+                                    icon.removeLast(4)
+                                    icon.removeFirst(35)
+                                    condition.icon = icon.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
                                 }
                                 
                                 if let text = _condition["text"] as? String{
