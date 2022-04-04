@@ -191,6 +191,18 @@ class Manager{
                                     hourInf.tempF = tempF
                                 }
                                 
+                                if let visibilityKm = hour["vis_km"] as? Double {
+                                    hourInf.visibilityKm = visibilityKm
+                                }
+                                
+                                if let visibilityMiles = hour["vis_miles"] as? Double {
+                                    hourInf.visibilityMiles = visibilityMiles
+                                }
+                                
+                                if let cloud = hour["cloud"] as? Int {
+                                    hourInf.cloudPercent = cloud
+                                }
+                                
                                 let condition = Condition()
                                 guard let _condition = hour["condition"] as? [String:Any] else {
                                     return

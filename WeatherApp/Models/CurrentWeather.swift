@@ -31,6 +31,10 @@ class HourlyDayInfo{
     var windKph:Double? = nil
     var windMph:Double? = nil
     var feelsLike:Double? = nil
+    
+    var visibilityKm:Double? = 0.0
+    var visibilityMiles:Double? = 0.0
+    var cloudPercent:Int? = 0
 }
 
 
