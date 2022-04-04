@@ -124,6 +124,36 @@ class Manager{
                                 dayInf.minTempF = minTempF
                             }
                             
+                            //work there with my new info
+                            
+                            if let averageTemperatureC = day["avgtemp_c"] as? Double{
+                                dayInf.averageTemperatureC = averageTemperatureC
+                            }
+                            
+                            if let averageTemperatureF = day["avgtemp_f"] as? Double{
+                                dayInf.averageTemperatureF = averageTemperatureF
+                            }
+                            
+                            if let averageVisibilityKm = day["avgvis_km"] as? Double{
+                                dayInf.averageVisibilityKm = averageVisibilityKm
+                            }
+                            
+                            if let averageVisibilityMiles = day["avgvis_miles"] as? Double{
+                                dayInf.averageVisibilityMiles = averageVisibilityMiles
+                            }
+                            
+                            if let chanceOfRain = day["daily_chance_of_rain"] as? Double{
+                                dayInf.chanceOfRain = chanceOfRain
+                            }
+                            
+                            if let maxWindKph = day["maxwind_kph"] as? Double{
+                                dayInf.maxWindKph = maxWindKph
+                            }
+                               
+                            if let maxWindMph = day["maxwind_mph"] as? Double{
+                                dayInf.maxWindMph = maxWindMph
+                            }
+                            
                             _forecast.day = dayInf
                             
                             let _cond = Condition()
@@ -136,8 +166,10 @@ class Manager{
                                 _cond.text = condText
                             }
                             
-                            if let condIcon = condition["icon"] as? String {
-                                _cond.icon = condIcon
+                            if var condIcon = condition["icon"] as? String {
+                                condIcon.removeLast(4)
+                                condIcon.removeFirst(35)
+                                _cond.icon = condIcon.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
                             }
                             dayInf.condition = _cond
                             _forecast.day = dayInf
@@ -161,13 +193,27 @@ class Manager{
                                     hourInf.tempF = tempF
                                 }
                                 
+                                if let visibilityKm = hour["vis_km"] as? Double {
+                                    hourInf.visibilityKm = visibilityKm
+                                }
+                                
+                                if let visibilityMiles = hour["vis_miles"] as? Double {
+                                    hourInf.visibilityMiles = visibilityMiles
+                                }
+                                
+                                if let cloud = hour["cloud"] as? Int {
+                                    hourInf.cloudPercent = cloud
+                                }
+                                
                                 let condition = Condition()
                                 guard let _condition = hour["condition"] as? [String:Any] else {
                                     return
                                 }
                                 
-                                if let icon = _condition["icon"] as? String{
-                                    condition.icon = icon
+                                if var icon = _condition["icon"] as? String{
+                                    icon.removeLast(4)
+                                    icon.removeFirst(35)
+                                    condition.icon = icon.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
                                 }
                                 
                                 if let text = _condition["text"] as? String{
@@ -183,8 +229,12 @@ class Manager{
                                     hourInf.windMph = windMph
                                 }
                                 
-                                if let feelsLike = hour["feelslike_c"] as? Double{
-                                    hourInf.feelsLike = feelsLike
+                                if let feelsLikeC = hour["feelslike_c"] as? Double{
+                                    hourInf.feelsLikeC = feelsLikeC
+                                }
+                                
+                                if let feelsLikeF = hour["feelslike_f"] as? Double{
+                                    hourInf.feelsLikeF = feelsLikeF
                                 }
                                 
                                 hourInfArr.append(hourInf)

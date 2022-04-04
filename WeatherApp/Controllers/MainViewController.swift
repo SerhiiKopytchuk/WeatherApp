@@ -20,9 +20,17 @@ class MainViewController: UIViewController {
     @IBOutlet weak var windDirectionLabel: UILabel!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var blurView: UIVisualEffectView!
     
     
-    //create main object, that will give all info to all things
+    let dayDetailedView = dayDetailView.instanceFromNib()
+    let hourDetailedView = hourDetailView.instanceFromNib()
+
+    
+    var allWeather = CurrentWeather()
+    
+    
+    //create main object, that will give all info to all thingser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +56,9 @@ class MainViewController: UIViewController {
     
     @objc func starSetup(){
         
+        blurView.isHidden = true
+
+        
         locationButton.setTitle("location".localized(), for: .normal)
         settingsButton.setTitle("settings".localized(), for: .normal)
 
@@ -68,6 +79,9 @@ class MainViewController: UIViewController {
         
         Manager.shared.sendRequest { current in
             DispatchQueue.main.async {
+                
+                self.allWeather = current
+                
                 guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
                     return
                 }
@@ -117,6 +131,8 @@ class MainViewController: UIViewController {
                 
                 self.dismiss(animated: true)
                 
+
+                
                 print()
             }
         }
@@ -127,9 +143,14 @@ class MainViewController: UIViewController {
 
 extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.dayCollectionView{
-            return CGSize(width: self.dayCollectionView.frame.width/4, height: 200)
+            return CGSize(width: self.dayCollectionView.frame.width/3, height: 200)
         }else{
             return CGSize(width: hourCollectionView.frame.width/3, height: 126)
         }
@@ -141,6 +162,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == self.dayCollectionView{
             return 3
         }else{
+            //need count to count num of item
             var count = 0
             let date = Date.now
             let formatter = DateFormatter()
@@ -151,6 +173,65 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
             return count
         }
         
+    }
+    
+
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+            if collectionView == self.dayCollectionView{
+
+                blurView.isHidden = false
+
+                dayDetailedView.frame.origin.x = 0
+                dayDetailedView.center.y = view.center.y
+                dayDetailedView.frame.size.width = self.view.frame.width
+                dayDetailedView.frame.size.height = view.frame.height/2
+                //try to configure
+
+
+
+
+                dayDetailedView.configure(weather: allWeather, index: indexPath.item)
+
+                dayDetailedView.rounded()
+                dayDetailedView.delegate = self
+
+                UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    self.view.addSubview(self.dayDetailedView)
+                }, completion: nil)
+                dayCollectionView.deselectItem(at: indexPath, animated: true)
+                dayCollectionView.reloadData()
+            }else{
+                
+                blurView.isHidden = false
+                
+
+                hourDetailedView.frame.origin.x = 0
+                hourDetailedView.center.y = view.center.y
+                hourDetailedView.frame.size.width = self.view.frame.width
+                hourDetailedView.frame.size.height = view.frame.height/2
+                
+                
+                hourDetailedView.rounded()
+                hourDetailedView.delegate = self
+                
+                var count = 0
+                let date = Date.now
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH"
+                let currentHour = formatter.string(from: date)
+                count = 24 - (Int(currentHour) ?? 0)
+                
+                hourDetailedView.configure(weather: allWeather, index: indexPath.item + 24 - count)
+                
+                UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    self.view.addSubview(self.hourDetailedView)
+                }, completion: nil)
+                
+                hourCollectionView.deselectItem(at: indexPath, animated: true)
+                hourCollectionView.reloadData()
+            }
+            return true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -179,11 +260,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     
                    
                     
-                    var iconStr = current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon
-                    iconStr?.removeLast(4)
-                    iconStr?.removeFirst(35)
-                    let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-                    cell.weatherImageView.image = UIImage(named: iconName ?? "Sunny")
+                    cell.weatherImageView.image = UIImage(named: current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[indexPath.item].date
                     
@@ -235,11 +312,8 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                         temp += "˚C"
                         cell.temperatureLabel.text = temp
                     }
-                    var iconStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon
-                    iconStr?.removeLast(4)
-                    iconStr?.removeFirst(35)
-                    let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-                    cell.imageView.image = UIImage(named: iconName ?? "Sunny")
+                    
+                    cell.imageView.image = UIImage(named: current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count ].time
                     let formatter = DateFormatter()
@@ -261,9 +335,27 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 5
     }
     
+}
+
+extension MainViewController:dayDetailViewDelegate{
+    func vcWasClosed() {
+        blurView.isHidden = true
+        UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+            self.dayDetailedView.removeFromSuperview()
+        }, completion: nil)
+    }
+}
+
+extension MainViewController: hourDetailViewDelegate{
+    func hourVcWasClosed() {
+        blurView.isHidden = true
+        UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+            self.hourDetailedView.removeFromSuperview()
+        }, completion: nil)
+    }
 }
 
 

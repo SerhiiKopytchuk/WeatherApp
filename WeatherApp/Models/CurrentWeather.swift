@@ -30,7 +30,13 @@ class HourlyDayInfo{
     var condition:Condition? = nil
     var windKph:Double? = nil
     var windMph:Double? = nil
-    var feelsLike:Double? = nil
+    var feelsLikeC:Double? = nil
+    var feelsLikeF:Double? = nil
+
+    
+    var visibilityKm:Double? = 0.0
+    var visibilityMiles:Double? = 0.0
+    var cloudPercent:Int? = 0
 }
 
 
@@ -39,6 +45,15 @@ class DayInfo{
     var minTempC:Double? = 0.0
     var maxTempF:Double? = 0.0
     var minTempF:Double? = 0.0
+    
+    var averageTemperatureC:Double? = 0.0
+    var averageTemperatureF:Double? = 0.0
+    var averageVisibilityKm:Double? = 0.0
+    var averageVisibilityMiles:Double? = 0.0
+    var chanceOfRain:Double? = 0.0
+    var maxWindKph:Double? = 0.0
+    var maxWindMph:Double? = 0.0
+    
     var condition:Condition? = nil
 }
 
