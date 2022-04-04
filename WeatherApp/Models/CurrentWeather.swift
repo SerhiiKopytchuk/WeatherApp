@@ -30,7 +30,13 @@ class HourlyDayInfo{
     var condition:Condition? = nil
     var windKph:Double? = nil
     var windMph:Double? = nil
-    var feelsLike:Double? = nil
+    var feelsLikeC:Double? = nil
+    var feelsLikeF:Double? = nil
+
+    
+    var visibilityKm:Double? = 0.0
+    var visibilityMiles:Double? = 0.0
+    var cloudPercent:Int? = 0
 }
 
 
@@ -48,8 +54,6 @@ class DayInfo{
     var maxWindKph:Double? = 0.0
     var maxWindMph:Double? = 0.0
     
-
-
     var condition:Condition? = nil
 }
 

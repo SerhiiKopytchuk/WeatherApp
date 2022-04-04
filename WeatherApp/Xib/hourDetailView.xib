@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="hourDetailView" customModule="WeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQa-uy-GmV">
+                    <rect key="frame" x="20" y="30" width="132.5" height="79"/>
+                    <attributedString key="attributedText">
+                        <fragment content="15˚C">
+                            <attributes>
+                                <font key="NSFont" size="66" name="GillSans-SemiBoldItalic"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXp-Vi-hEa">
+                    <rect key="frame" x="20" y="129" width="38" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feels like: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1n-3U-bzG">
+                    <rect key="frame" x="20" y="160" width="79" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dug-mi-nMd">
+                    <rect key="frame" x="20" y="191" width="98" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visibility: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INU-sF-kXC">
+                    <rect key="frame" x="20" y="222" width="72" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="clouds:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPl-aw-HIs">
+                    <rect key="frame" x="20" y="253" width="56" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zsI-pt-Xoh">
+                    <rect key="frame" x="292" y="18.5" width="102" height="102"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="zsI-pt-Xoh" secondAttribute="height" id="AVR-xt-5Gg"/>
+                        <constraint firstAttribute="height" constant="102" id="azn-cO-myw"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilW-0I-gLa">
+                    <rect key="frame" x="177.5" y="399" width="59" height="31"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="close"/>
+                    <connections>
+                        <action selector="clouseButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="qTa-lA-vrI"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="zsI-pt-Xoh" firstAttribute="width" secondItem="zsI-pt-Xoh" secondAttribute="height" id="I74-Pr-0wo"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ilW-0I-gLa" secondAttribute="bottom" constant="20" id="INk-zT-G2w"/>
+                <constraint firstItem="Dug-mi-nMd" firstAttribute="top" secondItem="q1n-3U-bzG" secondAttribute="bottom" constant="10" id="KAT-WH-f34"/>
+                <constraint firstItem="dPl-aw-HIs" firstAttribute="top" secondItem="INU-sF-kXC" secondAttribute="bottom" constant="10" id="VEA-ei-BIt"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zsI-pt-Xoh" secondAttribute="trailing" constant="20" id="c9o-D7-Gqf"/>
+                <constraint firstItem="q1n-3U-bzG" firstAttribute="top" secondItem="oXp-Vi-hEa" secondAttribute="bottom" constant="10" id="f0e-in-FHw"/>
+                <constraint firstItem="BQa-uy-GmV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="fBS-Nc-NIN"/>
+                <constraint firstItem="INU-sF-kXC" firstAttribute="top" secondItem="Dug-mi-nMd" secondAttribute="bottom" constant="10" id="heM-Rm-0A0"/>
+                <constraint firstItem="Dug-mi-nMd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="hiS-Hp-FrZ"/>
+                <constraint firstItem="zsI-pt-Xoh" firstAttribute="centerY" secondItem="BQa-uy-GmV" secondAttribute="centerY" id="oxH-Xw-zJw"/>
+                <constraint firstItem="oXp-Vi-hEa" firstAttribute="top" secondItem="BQa-uy-GmV" secondAttribute="bottom" constant="20" id="p1t-SY-ffz"/>
+                <constraint firstItem="dPl-aw-HIs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="sJb-zt-dCv"/>
+                <constraint firstItem="q1n-3U-bzG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="tq3-7Z-PKY"/>
+                <constraint firstItem="INU-sF-kXC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ttC-Va-1fo"/>
+                <constraint firstItem="BQa-uy-GmV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="w0d-Hz-Mrl"/>
+                <constraint firstItem="ilW-0I-gLa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wG5-0U-BZG"/>
+                <constraint firstItem="oXp-Vi-hEa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="y7K-li-1k1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cloudsLabel" destination="dPl-aw-HIs" id="RXq-yf-9ks"/>
+                <outlet property="clouseButton" destination="ilW-0I-gLa" id="mfj-U7-s0P"/>
+                <outlet property="feelsLikeLabel" destination="q1n-3U-bzG" id="xev-qI-N3T"/>
+                <outlet property="imageView" destination="zsI-pt-Xoh" id="soE-K4-LvK"/>
+                <outlet property="temperatureLabel" destination="BQa-uy-GmV" id="NfB-vd-crb"/>
+                <outlet property="timeLabel" destination="oXp-Vi-hEa" id="Ajt-i9-LZ3"/>
+                <outlet property="visibilityLabel" destination="INU-sF-kXC" id="UyW-As-uAd"/>
+                <outlet property="windSpeedLabel" destination="Dug-mi-nMd" id="XkK-je-Jn1"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

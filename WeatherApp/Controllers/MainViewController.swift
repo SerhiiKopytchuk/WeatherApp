@@ -24,6 +24,9 @@ class MainViewController: UIViewController {
     
     
     let dayDetailedView = dayDetailView.instanceFromNib()
+    let hourDetailedView = hourDetailView.instanceFromNib()
+
+    
     var allWeather = CurrentWeather()
     
     
@@ -159,6 +162,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         if collectionView == self.dayCollectionView{
             return 3
         }else{
+            //need count to count num of item
             var count = 0
             let date = Date.now
             let formatter = DateFormatter()
@@ -198,7 +202,34 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                 dayCollectionView.deselectItem(at: indexPath, animated: true)
                 dayCollectionView.reloadData()
             }else{
-                print("elsework")
+                
+                blurView.isHidden = false
+                
+
+                hourDetailedView.frame.origin.x = 0
+                hourDetailedView.center.y = view.center.y
+                hourDetailedView.frame.size.width = self.view.frame.width
+                hourDetailedView.frame.size.height = view.frame.height/2
+                
+                
+                hourDetailedView.rounded()
+                hourDetailedView.delegate = self
+                
+                var count = 0
+                let date = Date.now
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH"
+                let currentHour = formatter.string(from: date)
+                count = 24 - (Int(currentHour) ?? 0)
+                
+                hourDetailedView.configure(weather: allWeather, index: indexPath.item + 24 - count)
+                
+                UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                    self.view.addSubview(self.hourDetailedView)
+                }, completion: nil)
+                
+                hourCollectionView.deselectItem(at: indexPath, animated: true)
+                hourCollectionView.reloadData()
             }
             return true
     }
@@ -229,11 +260,7 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                     
                    
                     
-                    var iconStr = current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon
-                    iconStr?.removeLast(4)
-                    iconStr?.removeFirst(35)
-                    let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-                    cell.weatherImageView.image = UIImage(named: iconName ?? "Sunny")
+                    cell.weatherImageView.image = UIImage(named: current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[indexPath.item].date
                     
@@ -285,11 +312,8 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                         temp += "˚C"
                         cell.temperatureLabel.text = temp
                     }
-                    var iconStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon
-                    iconStr?.removeLast(4)
-                    iconStr?.removeFirst(35)
-                    let iconName = iconStr?.replacingOccurrences(of: "/", with: ":", options: .literal, range: nil)
-                    cell.imageView.image = UIImage(named: iconName ?? "Sunny")
+                    
+                    cell.imageView.image = UIImage(named: current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count].condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[0].hour?[indexPath.item + 24 - count ].time
                     let formatter = DateFormatter()
@@ -321,6 +345,15 @@ extension MainViewController:dayDetailViewDelegate{
         blurView.isHidden = true
         UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
             self.dayDetailedView.removeFromSuperview()
+        }, completion: nil)
+    }
+}
+
+extension MainViewController: hourDetailViewDelegate{
+    func hourVcWasClosed() {
+        blurView.isHidden = true
+        UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+            self.hourDetailedView.removeFromSuperview()
         }, completion: nil)
     }
 }

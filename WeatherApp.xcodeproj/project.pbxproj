@@ -27,6 +27,8 @@
 		4085C4BF27F45DBB0056E0C2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4085C4C127F45DBB0056E0C2 /* Localizable.strings */; };
 		4085C4C527F45E320056E0C2 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4085C4C427F45E320056E0C2 /* String+extension.swift */; };
 		40A7765527EF1B0D00C1988F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A7765427EF1B0D00C1988F /* LoadingViewController.swift */; };
+		40A8A45527FAD8690063E0C4 /* hourDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A8A45427FAD8690063E0C4 /* hourDetailView.xib */; };
+		40A8A45927FAD8910063E0C4 /* hourDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A8A45827FAD8910063E0C4 /* hourDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		4085C4C727F45EFF0056E0C2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4085C4C827F45F0B0056E0C2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		40A7765427EF1B0D00C1988F /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		40A8A45427FAD8690063E0C4 /* hourDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = hourDetailView.xib; sourceTree = "<group>"; };
+		40A8A45827FAD8910063E0C4 /* hourDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hourDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				4017952627F9848B00776C27 /* dayDetailView.xib */,
 				4017952827F984E200776C27 /* dayDetailView.swift */,
+				40A8A45427FAD8690063E0C4 /* hourDetailView.xib */,
+				40A8A45827FAD8910063E0C4 /* hourDetailView.swift */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 				4085C4BF27F45DBB0056E0C2 /* Localizable.strings in Resources */,
 				405E10CE27E5F3B100F3EAC2 /* Assets.xcassets in Resources */,
 				405E10CC27E5F3B000F3EAC2 /* Main.storyboard in Resources */,
+				40A8A45527FAD8690063E0C4 /* hourDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +244,7 @@
 				4018715A27E9D7AB00579F7A /* HoursCollectionViewCell.swift in Sources */,
 				405E10C727E5F3B000F3EAC2 /* SceneDelegate.swift in Sources */,
 				405E10E227E603A100F3EAC2 /* DaysCollectionViewCell.swift in Sources */,
+				40A8A45927FAD8910063E0C4 /* hourDetailView.swift in Sources */,
 				405E10E427E63DB700F3EAC2 /* Manager.swift in Sources */,
 				405E10D927E6010400F3EAC2 /* SettingsViewController.swift in Sources */,
 				40A7765527EF1B0D00C1988F /* LoadingViewController.swift in Sources */,
