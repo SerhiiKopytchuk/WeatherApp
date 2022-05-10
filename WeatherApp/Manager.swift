@@ -12,13 +12,16 @@ class Manager{
     static let shared = Manager()
     
     func sendRequest(competition: @escaping (_ current:CurrentWeather)->()){
-        
+//        UserDefaults.standard.set("London", forKey: "currentCity")
         guard let currentCity = UserDefaults.standard.value(forKey: "currentCity") as? String else{
             return
         }
         let currentWeather = CurrentWeather()
         
         guard let url = URL(string: "https://api.weatherapi.com/v1/forecast.json?key=d0a9ecd662d7487b911111422221903&q=\(currentCity)&days=7&aqi=no&alerts=no") else {
+            
+            
+
             return
         }
         

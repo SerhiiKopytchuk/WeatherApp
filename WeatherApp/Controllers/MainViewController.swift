@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     
     let dayDetailedView = dayDetailView.instanceFromNib()
     let hourDetailedView = hourDetailView.instanceFromNib()
-
+    
     
     var allWeather = CurrentWeather()
     
@@ -77,18 +77,18 @@ class MainViewController: UIViewController {
     
     @objc func starSetup(){
         
-//        windSpeedLabel.text = MainView
+        //        windSpeedLabel.text = MainView
         mainModelView.setWindSpeedText()
         mainModelView.setTempreatureText()
         mainModelView.setFealsTempreatureText()
         
         
         blurView.isHidden = true
-
+        
         
         locationButton.setTitle("location".localized(), for: .normal)
         settingsButton.setTitle("settings".localized(), for: .normal)
-
+        
         
         guard let controller = self.storyboard?.instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else{
             return
@@ -108,17 +108,10 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                 
                 self.allWeather = current
-                                
                 self.cityName.text = current.locationWeather?.name
                 self.countryLabel.text = current.locationWeather?.country
-                
 
-               
-                
-               
-               
-                
-                
+            
                 self.windDirectionLabel.text = "windDirection".localized()
                 self.windDirectionLabel.text! += current.currentWeather?.wind_dir ?? ""
                 
@@ -127,20 +120,24 @@ class MainViewController: UIViewController {
                 
                 self.dismiss(animated: true)
                 
-
+                
                 
                 print()
             }
         }
+        
         dayCollectionView.delegate = self
         dayCollectionView.dataSource = self
     }
+    
+    
+    
 }
 
 extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
+        
     }
     
     
@@ -171,63 +168,63 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
         
     }
     
-
+    
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-            if collectionView == self.dayCollectionView{
-
-                blurView.isHidden = false
-
-                dayDetailedView.frame.origin.x = 0
-                dayDetailedView.center.y = view.center.y
-                dayDetailedView.frame.size.width = self.view.frame.width
-                dayDetailedView.frame.size.height = view.frame.height/2
-                //try to configure
-
-
-
-
-                dayDetailedView.configure(weather: allWeather, index: indexPath.item)
-
-                dayDetailedView.rounded()
-                dayDetailedView.delegate = self
-
-                UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-                    self.view.addSubview(self.dayDetailedView)
-                }, completion: nil)
-                dayCollectionView.deselectItem(at: indexPath, animated: true)
-                dayCollectionView.reloadData()
-            }else{
-                
-                blurView.isHidden = false
-                
-
-                hourDetailedView.frame.origin.x = 0
-                hourDetailedView.center.y = view.center.y
-                hourDetailedView.frame.size.width = self.view.frame.width
-                hourDetailedView.frame.size.height = view.frame.height/2
-                
-                
-                hourDetailedView.rounded()
-                hourDetailedView.delegate = self
-                
-                var count = 0
-                let date = Date.now
-                let formatter = DateFormatter()
-                formatter.dateFormat = "HH"
-                let currentHour = formatter.string(from: date)
-                count = 24 - (Int(currentHour) ?? 0)
-                
-                hourDetailedView.configure(weather: allWeather, index: indexPath.item + 24 - count)
-                
-                UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
-                    self.view.addSubview(self.hourDetailedView)
-                }, completion: nil)
-                
-                hourCollectionView.deselectItem(at: indexPath, animated: true)
-                hourCollectionView.reloadData()
-            }
-            return true
+        if collectionView == self.dayCollectionView{
+            
+            blurView.isHidden = false
+            
+            dayDetailedView.frame.origin.x = 0
+            dayDetailedView.center.y = view.center.y
+            dayDetailedView.frame.size.width = self.view.frame.width
+            dayDetailedView.frame.size.height = view.frame.height/2
+            //try to configure
+            
+            
+            
+            
+            dayDetailedView.configure(weather: allWeather, index: indexPath.item)
+            
+            dayDetailedView.rounded()
+            dayDetailedView.delegate = self
+            
+            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                self.view.addSubview(self.dayDetailedView)
+            }, completion: nil)
+            dayCollectionView.deselectItem(at: indexPath, animated: true)
+            dayCollectionView.reloadData()
+        }else{
+            
+            blurView.isHidden = false
+            
+            
+            hourDetailedView.frame.origin.x = 0
+            hourDetailedView.center.y = view.center.y
+            hourDetailedView.frame.size.width = self.view.frame.width
+            hourDetailedView.frame.size.height = view.frame.height/2
+            
+            
+            hourDetailedView.rounded()
+            hourDetailedView.delegate = self
+            
+            var count = 0
+            let date = Date.now
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH"
+            let currentHour = formatter.string(from: date)
+            count = 24 - (Int(currentHour) ?? 0)
+            
+            hourDetailedView.configure(weather: allWeather, index: indexPath.item + 24 - count)
+            
+            UIView.transition(with: self.view, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                self.view.addSubview(self.hourDetailedView)
+            }, completion: nil)
+            
+            hourCollectionView.deselectItem(at: indexPath, animated: true)
+            hourCollectionView.reloadData()
+        }
+        return true
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -254,14 +251,14 @@ extension MainViewController:UICollectionViewDelegate, UICollectionViewDataSourc
                         cell.maxTemperatureLabel.text = String(current.forecast?.forecastDay?[indexPath.item].day?.maxTempC ?? 0)
                     }
                     
-                   
+                    
                     
                     cell.weatherImageView.image = UIImage(named: current.forecast?.forecastDay?[indexPath.item].day?.condition?.icon ?? "Sunny")
                     
                     let dateStr = current.forecast?.forecastDay?[indexPath.item].date
                     
                     let formatter = DateFormatter()
-
+                    
                     
                     formatter.dateFormat = "yyyy-MM-dd"
                     let date = formatter.date(from: dateStr ?? "")

@@ -74,10 +74,36 @@ class ChangeCityViewController: UIViewController{
             print("There no City")
             return
         }
-  
-        UserDefaults.standard.set(locationCity, forKey: "currentCity")
-        cityTextField.text = locationCity
-        NotificationCenter.default.post(name: .internetDown, object: nil, userInfo: nil)
+        
+        
+        
+        Manager.shared.getCities(cityStartName: locationCity ) { current in
+            DispatchQueue.main.async {
+                let lastCity = self.cityTextField.text ?? ""
+                self.cityTextField.text = locationCity
+                UserDefaults.standard.set(current, forKey: "citiesArray")
+                self.cityTableView.reloadData()
+                
+                guard let citiesArray = UserDefaults.standard.value(forKey: "citiesArray") as? [String] else{
+                    return
+                }
+                
+                if citiesArray != []{
+                    UserDefaults.standard.set(citiesArray[0], forKey: "currentCity")
+                    self.cityTextField.text = citiesArray[0]
+                    NotificationCenter.default.post(name: .internetDown, object: nil, userInfo: nil)
+                }else{
+                    self.cityTextField.text  = lastCity
+                    print("no matches")
+                    let alert = UIAlertController(title: "Sorry we can't find weather in your place", message: "please type near place in text filed", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+            
+
+        
     }
     
     
