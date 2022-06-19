@@ -13,7 +13,7 @@ class Manager{
     
     func sendRequest(competition: @escaping (_ current:CurrentWeather)->()){
         
-        guard let currentCity = UserDefaults.standard.value(forKey: "currentCity") as? String else{
+        guard let currentCity = UserDefaults.standard.value(forKey: "currentCity") as? String else {
             return
         }
         let currentWeather = CurrentWeather()

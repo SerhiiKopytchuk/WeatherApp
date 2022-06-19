@@ -29,17 +29,24 @@ class MainViewController: UIViewController {
     
     var allWeather = CurrentWeather()
     
+    var mainModelView = MainViewModel()
     
     //create main object, that will give all info to all thingser
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
+
         NotificationCenter.default.addObserver(self, selector: #selector(starSetup), name: .internetDown, object: nil)
-        
+//        bind()
+//        starSetup()
+    }
+
+
+    override func viewDidAppear(_ animated: Bool) {
+        bind()
         starSetup()
-        
-        
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
@@ -54,7 +61,33 @@ class MainViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func bind(){
+        mainModelView.windSpeedText.bind { text in
+            DispatchQueue.main.async {
+                self.windSpeedLabel.text = text
+            }
+        }
+        
+        mainModelView.temperatureText.bind { text in
+            DispatchQueue.main.async {
+                self.temperatureLabel.text = text
+            }
+        }
+        
+        mainModelView.feelsTemperatureText.bind { text in
+            DispatchQueue.main.async {
+                self.feelsLikeLabel.text = text
+            }
+        }
+    }
+    
     @objc func starSetup(){
+        
+
+        mainModelView.setWindSpeedText()
+        mainModelView.setTempreatureText()
+        mainModelView.setFealsTempreatureText()
+        
         
         blurView.isHidden = true
 
@@ -81,42 +114,11 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                 
                 self.allWeather = current
-                
-                guard let tempType = UserDefaults.standard.value(forKey: "temperatureType") as? String else{
-                    return
-                }
+                                
                 self.cityName.text = current.locationWeather?.name
                 self.countryLabel.text = current.locationWeather?.country
                 
-                self.feelsLikeLabel.text = "feelsLike".localized()
-                self.windSpeedLabel.text = "windSpeed".localized()
 
-                
-                switch tempType{
-                case "C":
-                    self.temperatureLabel.text = String(current.currentWeather?.tempC ?? 0.0) + "˚C"
-                    self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeC ?? 0.0) + "˚C"
-                case "F":
-                    self.temperatureLabel.text = String(current.currentWeather?.tempF ?? 0.0) + "˚F"
-                    self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeF ?? 0.0) + "˚F"
-                default:
-                    self.temperatureLabel.text = String(current.currentWeather?.tempC ?? 0.0) + "˚C"
-                    self.feelsLikeLabel.text! += String(current.currentWeather?.feelsLikeC ?? 0.0) + "˚C"
-                }
-                
-                guard let windType = UserDefaults.standard.value(forKey: "windSpeedType") as? String else{
-                    return
-                }
-                
-                switch windType{
-                case "kph":
-                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + " kph"
-                case "mph":
-                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_mph ?? 0.0) + " mph"
-                default:
-                    self.windSpeedLabel.text! += String(current.currentWeather?.wind_kph ?? 0.0) + "kph"
-
-                }
                
                 
                
@@ -359,3 +361,4 @@ extension MainViewController: hourDetailViewDelegate{
 }
 
 
+//362
