@@ -35,12 +35,18 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
+
         NotificationCenter.default.addObserver(self, selector: #selector(starSetup), name: .internetDown, object: nil)
+//        bind()
+//        starSetup()
+    }
+
+
+    override func viewDidAppear(_ animated: Bool) {
         bind()
         starSetup()
-        
-        
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
@@ -77,7 +83,7 @@ class MainViewController: UIViewController {
     
     @objc func starSetup(){
         
-//        windSpeedLabel.text = MainView
+
         mainModelView.setWindSpeedText()
         mainModelView.setTempreatureText()
         mainModelView.setFealsTempreatureText()
