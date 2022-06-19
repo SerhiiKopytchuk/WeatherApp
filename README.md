@@ -6,7 +6,7 @@
 <img width="375" alt="Screenshot 2022-06-19 at 22 09 24" src="https://user-images.githubusercontent.com/97970279/174497756-5bd73700-2786-4fff-b2ea-6228efb9de2f.png">
 </p>
 
- ### :white_check_mark: Implemented current, daily, hourly viewign weather 
+ ### :white_check_mark: Implemented current, daily, hourly viewign weather.
  ----
  
 <p float="left">
@@ -15,14 +15,14 @@
 
 </p>
 
- ### :white_check_mark: Can choose current location or type location that include [weather](https://www.weatherapi.com) api service
+ ### :white_check_mark: Can choose current location or type location that include [weather](https://www.weatherapi.com) api service.
 ----
 
  <p float="left"> 
  <img width="375" alt="Screenshot 2022-06-19 at 22 47 11" src="https://user-images.githubusercontent.com/97970279/174497995-b5ed68bc-6ca5-43f0-b172-55c8d1d7adee.png">
  </p>
 
- ### :white_check_mark: Signup and SignIn using Firebase Auth
+ ### :white_check_mark: Settings, that include temperature type, wind speed type, distance type. 
  ----
  
  ## Description
